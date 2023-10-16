@@ -5,3 +5,11 @@ rebuild_master:
             package: novalive
     filters:
     event: push
+workflow:
+  steps:
+    - branch_package:
+        source_project: home:hopeandtruth6517
+        source_package: novalive
+        target_project: home:hopeandtruth6517:nova-apps
+  filters:
+    event: tag_push
