@@ -1,0 +1,20 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>HomePage.qml</file>
+        <file>FavoritesPage.qml</file>
+        <file>PlayerAndSongsPage.qml</file>
+        <file>MoreStationsPage.qml</file>
+        <file>GenresSideBarPage.qml</file>
+        <file>CountrySideBarPage.qml</file>
+        <file>LanguageSideBarPage.qml</file>
+        <file>StationsByGenrePage.qml</file>
+        <file>StationsByCountryPage.qml</file>
+        <file>StationsByLanguagePage.qml</file>
+        <file>SearchStationsPage.qml</file>
+        <file>SoulFunkPage.qml</file>
+        <file>../assets/pixabay-cc0-mod2-cassette-2672633_640.png</file>
+        <file>../assets/logo.png</file>
+        <file>../assets/logo.svg</file>
+    </qresource>
+</RCC>

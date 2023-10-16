@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=Nova Live
+Comment=Discover and listen to internet radio stations
+TryExec=novalive
+Exec=novalive %U
+Terminal=false
+Type=Application
+GenericName=
+StartupNotify=true
+Icon=novalive
+Categories=AudioVideo
+MimeType=
+SingleMainWindow=true
