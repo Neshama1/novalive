@@ -54,10 +54,8 @@ Maui.Page {
 
         model: stationsByCountryModel
         delegate: Rectangle {
-            Maui.Theme.inherit: false
-            Maui.Theme.colorSet: Maui.Theme.View
             width: 130; height: 155
-            color: stationMouse.hovered ? (Maui.ColorUtils.brightnessForColor(Maui.Theme.backgroundColor) == Maui.ColorUtils.Light ? Qt.darker(Maui.Theme.alternateBackgroundColor,1.04) : Qt.lighter(Maui.Theme.backgroundColor,1.2)) : Qt.lighter(Maui.Theme.alternateBackgroundColor,1.02)
+            color: stationMouse.hovered ? (Maui.ColorUtils.brightnessForColor(Maui.Theme.backgroundColor) == Maui.ColorUtils.Light ? Qt.darker(Maui.Theme.alternateBackgroundColor,1.04) : Qt.lighter(Maui.Theme.alternateBackgroundColor,1.6)) : Qt.lighter(Maui.Theme.backgroundColor,1.04)
             radius: 4
             Rectangle {
                 width: parent.width

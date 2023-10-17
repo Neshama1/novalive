@@ -317,7 +317,7 @@ Maui.Page {
                 anchors.left: parent.left
                 anchors.right: parent.right
                 radius:4
-                color: Maui.ColorUtils.brightnessForColor(Maui.Theme.backgroundColor) == Maui.ColorUtils.Light ? Qt.lighter(Maui.Theme.backgroundColor,1.03) : Qt.lighter(Maui.Theme.backgroundColor,1.3)
+                color: Maui.ColorUtils.brightnessForColor(Maui.Theme.backgroundColor) == Maui.ColorUtils.Light ? (mouse.hovered ? Maui.Theme.highlightColor : Qt.lighter(Maui.Theme.backgroundColor,1.03)) : (mouse.hovered ? Maui.Theme.highlightColor : Qt.lighter(Maui.Theme.backgroundColor,1.3))
 
                 Label {
                     opacity: 0.60
@@ -342,6 +342,9 @@ Maui.Page {
                     text: song
                     font.pixelSize: 11
                     elide: Text.ElideRight
+                }
+                HoverHandler {
+                    id: mouse
                 }
             }
         }
