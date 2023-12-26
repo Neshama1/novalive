@@ -66,8 +66,41 @@ Maui.ApplicationWindow
         return get_radiobrowser_base_urls().then(hosts => {
             var item = hosts[Math.floor(Math.random() * hosts.length)];
             baseUrl = item.toString()
-            console.info("baseUrl: " + baseUrl)
-            pushPages()
+
+            getStatus(baseUrl).then(status => {
+                console.info("baseUrl: " + baseUrl)
+                console.info("status: " + status)
+                if (status == 502) {
+                    // 502 Bad Gateway. Get another random server
+                    get_radiobrowser_base_url_random()
+                }
+                else if (status == 200) {
+                    // OK
+                    pushPages()
+                }
+            });
+        });
+    }
+
+    function getStatus(server) {
+        return new Promise((resolve, reject)=>{
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", server);
+            xhr.send();
+
+            xhr.onreadystatechange = function() {
+                console.log(xhr);
+                if (xhr.readyState == 4 && xhr.status == 502) {
+                    console.info("Server response not received")
+                    var status = 502
+                    resolve(status)
+                }
+                else if (xhr.readyState == 4 && xhr.status == 200) {
+                    console.info("Server response received")
+                    var status = 200
+                    resolve(status)
+                }
+            };
         });
     }
 
