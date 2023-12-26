@@ -45,7 +45,7 @@ Maui.Page {
                 stationSearchCount = stationSearchModel.count
             }
         }
-        xhr.open("GET", "https://nl1.api.radio-browser.info/json/stations/search?limit=999&name=" + term + "&hidebroken=true&order=clickcount&reverse=true");
+        xhr.open("GET", baseUrl + "/json/stations/search?limit=999&name=" + term + "&hidebroken=true&order=clickcount&reverse=true");
         xhr.send();
     }
 

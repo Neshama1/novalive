@@ -39,7 +39,7 @@ Maui.Page {
                 stationsByCountryCount = stationsByCountryModel.count
             }
         }
-        xhr.open("GET", "https://nl1.api.radio-browser.info/json/stations/search?limit=999&countrycode=" + code + "&hidebroken=true&order=clickcount&reverse=true");
+        xhr.open("GET", baseUrl + "/json/stations/search?limit=999&countrycode=" + code + "&hidebroken=true&order=clickcount&reverse=true");
         xhr.send();
     }
 

@@ -49,7 +49,7 @@ Maui.Page
             }
         }
         //xhr.open("GET", "http://api.flickr.com/services/feeds/photos_public.gne?format=json&nojsoncallback=1&tags=munich");
-        xhr.open("GET", "https://nl1.api.radio-browser.info/json/stations/search?limit=20&tagList=information&hidebroken=true&order=clickcount&reverse=true");
+        xhr.open("GET", baseUrl + "/json/stations/search?limit=20&tagList=information&hidebroken=true&order=clickcount&reverse=true");
         xhr.send();
     }
 

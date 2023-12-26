@@ -60,7 +60,7 @@ Maui.Page {
                 stationsByLanguageCount = stationsByLanguageModel.count
             }
         }
-        xhr.open("GET", "https://at1.api.radio-browser.info/json/stations/search?limit=999&language=" + language + "&hidebroken=true&order=clickcount&reverse=true");
+        xhr.open("GET", baseUrl + "/json/stations/search?limit=999&language=" + language + "&hidebroken=true&order=clickcount&reverse=true");
         xhr.send();
     }
 }
