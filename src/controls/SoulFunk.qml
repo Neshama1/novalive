@@ -1,24 +1,44 @@
 import QtQuick 2.15
-import QtQml 2.15
 import QtQuick.Controls 2.15
-import QtQuick.Layouts 1.12
-import QtMultimedia 5.15
 import org.mauikit.controls 1.3 as Maui
 import Qt.labs.settings 1.0
+import QtMultimedia 5.15
 
 Maui.Page {
-
     id: soulfunkPage
 
-    headBar.visible: false
+    showCSDControls: true
 
-    Maui.Theme.inherit: false
-    Maui.Theme.colorSet: Maui.Theme.Window
+    property int rightStationIndex
 
-
-    background: Rectangle {
+    headBar.background: Rectangle {
         anchors.fill: parent
-        color: Maui.ColorUtils.brightnessForColor(Maui.Theme.backgroundColor) == Maui.ColorUtils.Light ?Qt.lighter(Maui.Theme.backgroundColor,1.04) : Qt.lighter(Maui.Theme.backgroundColor,1.15)
+        Maui.Theme.inherit: false
+        Maui.Theme.colorSet: Maui.Theme.View
+        color: Maui.Theme.backgroundColor
+    }
+
+    headBar.leftContent: Maui.ToolButtonMenu
+    {
+        icon.name: "application-menu"
+        MenuItem
+        {
+            text: i18n("Settings")
+            icon.name: "settings-configure"
+            onTriggered: settingsDialog.open()
+        }
+        MenuItem
+        {
+            text: "About"
+            icon.name: "documentinfo"
+            onTriggered: root.about()
+        }
+        MenuItem
+        {
+            text: "Add a radio station"
+            icon.name: "radio"
+            onTriggered: Qt.openUrlExternally("https://www.radio-browser.info/add")
+        }
     }
 
     property string soulfunkRadios: ""
@@ -28,7 +48,13 @@ Maui.Page {
     }
 
     Component.onCompleted: {
+        opacityAnimation.start()
+        xAnimation.start()
+
+        playingInfo.text = playingInfoOnChangedPage
+
         if (true) {
+            soulfunkModel.clear()
             fillModel()
             sortModel()
         }
@@ -52,6 +78,24 @@ Maui.Page {
             datamodel.push(soulfunkModel.get(i))
         }
         soulfunkRadios = JSON.stringify(datamodel)
+    }
+
+    PropertyAnimation {
+        id: opacityAnimation
+        target: soulfunkPage
+        properties: "opacity"
+        from: 0
+        to: 1.0
+        duration: 250
+    }
+
+    PropertyAnimation {
+        id: xAnimation
+        target: soulfunkPage
+        properties: "x"
+        from: -20
+        to: 0
+        duration: 500
     }
 
     function fillModel()
@@ -83,60 +127,49 @@ Maui.Page {
         }
     }
 
-    // SOUL FUNK RADIOS
+    // HOLDER
 
-    GridView {
+	Maui.Holder
+	{
+		anchors.fill: parent
+		visible: soulfunkModel.count == 0 ? true : false
+		title: i18n("Favorite")
+		body: i18n("Add radio stations to my favorites")
+		emoji: "favorite"
+		isMask: false
+	}
+
+    Maui.GridBrowser {
+        id: grid
         anchors.fill: parent
         anchors.margins: 20
-
-        cellWidth: 145; cellHeight: 165
+        itemSize: 200
+        itemHeight: 100
+        adaptContent: true
+        horizontalScrollBarPolicy: ScrollBar.AsNeeded
+        verticalScrollBarPolicy: ScrollBar.AsNeeded
 
         model: soulfunkModel
+
         delegate: Rectangle {
-            width: 130; height: 155
-            color: stationMouse.hovered ? (Maui.ColorUtils.brightnessForColor(Maui.Theme.backgroundColor) == Maui.ColorUtils.Light ? Qt.darker(Maui.Theme.alternateBackgroundColor,1.04) : Qt.lighter(Maui.Theme.alternateBackgroundColor,1.6)) : Qt.lighter(Maui.Theme.backgroundColor,1.04)
-            radius: 4
+            color: "transparent"
+            width: GridView.view.cellWidth
+            height: GridView.view.cellHeight
             Rectangle {
-                width: parent.width
-                height: parent.height - itemLabel.height
-                color: "transparent"
+                anchors.fill: parent
+                anchors.margins: 10
                 radius: 4
-                Maui.IconItem
-                {
-                    anchors.centerIn: parent
-                    anchors.margins: 20
-                    imageSource: favicon == "" ? "qrc:/assets/pixabay-cc0-mod2-cassette-2672633_640.png" : favicon
-                    iconSource: "emblem-music-symbolic"
-                    imageSizeHint: 110
-                    maskRadius: Maui.Style.radiusV
-                    fillMode: Image.PreserveAspectCrop
-                }
-            }
-            Rectangle {
-                id: itemLabel
-                anchors.left: parent.left
-                anchors.right: parent.right
-                anchors.bottom: parent.bottom
-                height: 25
-                color: "transparent"
-                radius: 4
+                color: Maui.Theme.alternateBackgroundColor
+
                 Label {
-                    id: stationLabel
-                    anchors.left: parent.left
-                    anchors.right: parent.right
-                    anchors.top: parent.top
-                    anchors.leftMargin: 10
-                    anchors.rightMargin: 10
-                    anchors.topMargin: 0
-                    opacity: 0.75
-                    height: 15
+                    anchors.centerIn: parent
+                    width: parent.width - 20
+                    height: parent.height - 20
+                    horizontalAlignment: Text.AlignHCenter
                     text: name
-                    elide: Qt.ElideRight
-                    font.pixelSize: 12
+                    font.pixelSize: 15
+                    elide: Text.ElideRight
                 }
-            }
-            HoverHandler {
-                id: stationMouse
             }
             MouseArea {
                 anchors.fill: parent
@@ -144,16 +177,13 @@ Maui.Page {
                 onClicked: {
                     if (mouse.button == Qt.LeftButton)
                     {
+                        grid.currentIndex = index
+                        currentStation = soulfunkModel.get(grid.currentIndex).name
+                        playingInfo.text = currentStation
+                        playingInfoOnChangedPage = playingInfo.text
                         player.stop()
-                        player.source = url_resolved
-                        stationIndex = index
+                        player.source = soulfunkModel.get(grid.currentIndex).url_resolved
                         player.play()
-                        radioicon = favicon == "" ? "qrc:/assets/pixabay-cc0-mod2-cassette-2672633_640.png" : favicon
-                        stationName = name
-                        if (sideBarIndex != 2) {
-                            sideBarIndex = 2
-                            _stackViewSidePanel.push("qrc:/PlayerAndSongsPage.qml")
-                        }
                     }
                     if (mouse.button == Qt.RightButton)
                     {
@@ -163,21 +193,61 @@ Maui.Page {
                 }
                 Menu {
                     id: contextMenu
-                    /*
-                    MenuItem {
-                        text: "Remove"
-                        onTriggered: {
-                            soulfunkModel.remove(rightStationIndex)
-                        }
-                    }
-                    */
                     MenuItem {
                         text: "Visit website"
+                        icon.name: "go-home"
                         onTriggered: {
                             Qt.openUrlExternally(soulfunkModel.get(rightStationIndex).homepage)
                         }
                     }
                 }
+            }
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    grid.currentIndex = index
+                    currentStation = soulfunkModel.get(grid.currentIndex).name
+                    playingInfo.text = currentStation
+                    playingInfoOnChangedPage = playingInfo.text
+                    player.stop()
+                    player.source = soulfunkModel.get(grid.currentIndex).url_resolved
+                    player.play()
+                }
+            }
+        }
+    }
+
+    Maui.FloatingButton
+    {
+        id: playButton
+        anchors.bottom: parent.bottom
+        anchors.right: parent.right
+        anchors.margins: 20
+        width: 60
+        height: width
+        icon.name: player.playbackState == MediaPlayer.StoppedState ? "media-playback-start" : "media-playback-stop"
+        onClicked: player.playbackState == MediaPlayer.StoppedState ? player.play() : player.stop()
+    }
+
+    Maui.FloatingButton
+    {
+        id: playingInfo
+        anchors.bottom: parent.bottom
+        anchors.right: playButton.left
+        anchors.margins: 20
+        visible: player.playbackState == MediaPlayer.StoppedState ? false : true
+        width: 100
+        height: 60
+        background: Rectangle {
+            anchors.fill: parent
+            radius: 4
+            color: Maui.ColorUtils.brightnessForColor(Maui.Theme.backgroundColor) == Maui.ColorUtils.Light ? "white" : "dimgrey"
+        }
+
+        Connections {
+            target: root
+            onTitleChanged: {
+                playingInfo.text = currentStation + " playing " + currentTitle
             }
         }
     }

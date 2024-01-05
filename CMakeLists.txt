@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.16)
 
-project(novalive VERSION 1.0)
+project(novalive VERSION 0.1.5)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -33,6 +33,9 @@ include(FeatureSummary)
 find_package(Qt5 ${QT_MIN_VERSION} REQUIRED COMPONENTS Core Quick Qml Widgets Multimedia)
 find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS I18n CoreAddons Config)
 
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(MPV REQUIRED IMPORTED_TARGET mpv)
+
 find_package(Qt5QuickCompiler)
 set_package_properties(Qt5QuickCompiler PROPERTIES
     DESCRIPTION "Compile QML at build time"
@@ -40,6 +43,8 @@ set_package_properties(Qt5QuickCompiler PROPERTIES
     )
 
 find_package(MauiKit3)
+
+add_definitions( -Wall -O2 -fexceptions )
 
 if(ECM_SOURCE_UNDER_VERSION_CONTROL)
     execute_process(

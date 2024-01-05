@@ -2,7 +2,7 @@
 // SPDX-FileCopyrightText: 2023 asterion <email>
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-#include "backend/languagebackend.h"
+#include "languagebackend.h"
 
 LanguageBackend::LanguageBackend()
 {

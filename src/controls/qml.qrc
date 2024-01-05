@@ -1,20 +1,21 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>HomePage.qml</file>
-        <file>FavoritesPage.qml</file>
-        <file>PlayerAndSongsPage.qml</file>
-        <file>MoreStationsPage.qml</file>
-        <file>GenresSideBarPage.qml</file>
-        <file>CountrySideBarPage.qml</file>
-        <file>LanguageSideBarPage.qml</file>
-        <file>StationsByGenrePage.qml</file>
-        <file>StationsByCountryPage.qml</file>
-        <file>StationsByLanguagePage.qml</file>
-        <file>SearchStationsPage.qml</file>
-        <file>SoulFunkPage.qml</file>
-        <file>../assets/pixabay-cc0-mod2-cassette-2672633_640.png</file>
-        <file>../assets/logo.png</file>
-        <file>../assets/logo.svg</file>
+        <file>Home.qml</file>
+        <file>Favorites.qml</file>
+        <file>Notifications.qml</file>
+        <file>SoulFunk.qml</file>
+        <file>Search.qml</file>
+        <file>Genres.qml</file>
+        <file>Country.qml</file>
+        <file>Language.qml</file>
+        <file>StationsByGenre.qml</file>
+        <file>StationsByCountry.qml</file>
+        <file>StationsByLanguage.qml</file>
+        <file>APIKeyYouTube1.qml</file>
+        <file>APIKeyYouTube2.qml</file>
+        <file>APIKeyYouTube3.qml</file>
+        <file>YouTube.qml</file>
+        <file>SettingsDialog.qml</file>
     </qresource>
 </RCC>

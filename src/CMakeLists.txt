@@ -13,9 +13,10 @@ qtquick_compiler_add_resources(project_QML_QRC controls/qml.qrc)
 add_executable(${PROJECT_NAME}
     ${project_SRCS}
     ${project_QML_QRC}
-    backend/genresbackend.cpp
-    backend/countrybackend.cpp
-    backend/languagebackend.cpp
+    code/genresbackend.cpp
+    code/countrybackend.cpp
+    code/languagebackend.cpp
+    code/mpvrenderer.cpp
     )
 
 target_compile_definitions(${PROJECT_NAME}
@@ -33,6 +34,8 @@ target_link_libraries(${PROJECT_NAME}
     KF5::CoreAddons
     KF5::I18n
     KF5::ConfigCore
+
+    PkgConfig::MPV
     )
 
 install(TARGETS ${PROJECT_NAME} ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})

@@ -12,9 +12,10 @@
 
 #include "../project_version.h"
 
-#include "backend/genresbackend.h"
-#include "backend/countrybackend.h"
-#include "backend/languagebackend.h"
+#include "genresbackend.h"
+#include "countrybackend.h"
+#include "languagebackend.h"
+#include "mpvrenderer.h"
 
 //Useful for setting quickly an app template
 #define ORG_NAME "KDE"
@@ -31,6 +32,7 @@ int main(int argc, char *argv[])
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
     QApplication app(argc, argv);
+    setlocale(LC_NUMERIC, "C");
 
     app.setOrganizationName(QStringLiteral(ORG_NAME));
     app.setWindowIcon(QIcon(":/logo.png"));
@@ -71,6 +73,8 @@ int main(int argc, char *argv[])
     LanguageBackend languagebackend;
     qmlRegisterSingletonInstance<LanguageBackend>("org.kde.novalive", 1, 0, "LanguageBackend", &languagebackend);
     engine.rootContext()->setContextProperty("languageModel",QVariant::fromValue(languagebackend.m_language));
+
+    qmlRegisterType<MpvObject>("org.kde.novalive", 1, 0, "MpvObject");
 
     engine.rootContext()->setContextObject(new KLocalizedContext(&engine));
 

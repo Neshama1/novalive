@@ -2,7 +2,7 @@
 // SPDX-FileCopyrightText: 2023 asterion <email>
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-#include "backend/countrybackend.h"
+#include "countrybackend.h"
 
 CountryBackend::CountryBackend()
 {
