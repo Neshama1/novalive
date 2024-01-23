@@ -5,6 +5,8 @@ import org.mauikit.controls 1.3 as Maui
 Maui.Page {
     id: notificationsPage
 
+    property int rightStationIndex
+
     showCSDControls: true
 
     headBar.background: Rectangle {
@@ -96,9 +98,6 @@ Maui.Page {
                 //iconSource: favicon
                 iconSizeHint: Maui.Style.iconSizes.medium
 
-                onClicked: {
-                }
-
                 quickActions: [
                     Action
                     {
@@ -111,6 +110,34 @@ Maui.Page {
                         }
                     }
                 ]
+            }
+            MouseArea {
+                anchors.fill: parent
+                acceptedButtons: Qt.RightButton
+                onClicked: {
+                    if (mouse.button == Qt.RightButton)
+                    {
+                        rightStationIndex = index
+                        contextMenu.popup()
+                    }
+                }
+                Menu {
+                    id: contextMenu
+                    MenuItem {
+                        text: "Copy title"
+                        icon.name: "edit-copy"
+                        onTriggered: {
+                            textEdit.text = notificationsModel.get(rightStationIndex).title
+                            textEdit.selectAll()
+                            textEdit.copy()
+                        }
+                    }
+                }
+                TextEdit{
+                    // An invisible TextEdit can save the selected text in the clipboard
+                    id: textEdit
+                    visible: false
+                }
             }
         }
     }
