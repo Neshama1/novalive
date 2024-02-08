@@ -26,9 +26,14 @@ Maui.Page {
     }
 
     ColumnLayout {
+        width: parent.width - 40
         anchors.centerIn: parent
         Label {
             Layout.alignment: Qt.AlignCenter
+            anchors.left: parent.left
+            anchors.right: parent.right
+            elide: Text.ElideRight
+            wrapMode: Text.WordWrap
             font.pixelSize: 25
             text: "Nova Live is an internet radio player based on RadioBrowser"
         }
