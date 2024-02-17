@@ -41,9 +41,12 @@ Maui.Page {
 
     ColumnLayout {
         anchors.centerIn: parent
+        width: parent.width - 40
         Maui.IconItem
         {
             Layout.alignment: Qt.AlignCenter
+            anchors.left: parent.left
+            anchors.right: parent.right
             imageSource: "qrc:/pixabay-cassette-4103530_1280.png"
             imageSizeHint: 270
             maskRadius: Maui.Style.radiusV
@@ -51,6 +54,10 @@ Maui.Page {
         }
         Label {
             Layout.alignment: Qt.AlignCenter
+            anchors.left: parent.left
+            anchors.right: parent.right
+            elide: Text.ElideRight
+            wrapMode: Text.WordWrap
             font.pixelSize: 28
             text: "Listen to your radio station history on YouTube again"
         }

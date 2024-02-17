@@ -41,19 +41,24 @@ Maui.Page {
 
     ColumnLayout {
         anchors.centerIn: parent
+        width: parent.width - 180
         Label {
             Layout.alignment: Qt.AlignCenter
+            elide: Text.ElideRight
+            wrapMode: Text.WordWrap
             font.pixelSize: 25
             text: "Paste the key generated"
         }
         TextField {
             id: textField
+            Layout.alignment: Qt.AlignCenter
             onAccepted: apiKeyYouTube = text
         }
     }
 
     Maui.FloatingButton
     {
+        id: backButton
         anchors.verticalCenter: parent.verticalCenter
         anchors.left: parent.left
         anchors.margins: 20
@@ -71,6 +76,7 @@ Maui.Page {
 
     Maui.FloatingButton
     {
+        id: nextButton
         anchors.verticalCenter: parent.verticalCenter
         anchors.right: parent.right
         anchors.margins: 20

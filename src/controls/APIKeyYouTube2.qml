@@ -41,8 +41,14 @@ Maui.Page {
 
     ColumnLayout {
         anchors.centerIn: parent
+        width: parent.width - 40
         Label {
             Layout.alignment: Qt.AlignCenter
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.rightMargin: 80
+            elide: Text.ElideRight
+            wrapMode: Text.WordWrap
             font.pixelSize: 25
             text: "Provide your own API key, follow the steps indicated and copy the key generated"
         }
