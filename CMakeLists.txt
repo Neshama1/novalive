@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.16)
 
-project(novalive VERSION 0.1.7)
+project(novalive VERSION 0.1.9)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
