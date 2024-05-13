@@ -120,6 +120,7 @@ MpvObject::MpvObject(QQuickItem * parent)
 
     mpv_set_option_string(mpv, "terminal", "yes");
     mpv_set_option_string(mpv, "msg-level", "all=v");
+    mpv_set_option_string(mpv, "vo", "libmpv");
 
     if (mpv_initialize(mpv) < 0)
         throw std::runtime_error("could not initialize mpv context");
@@ -133,6 +134,8 @@ MpvObject::MpvObject(QQuickItem * parent)
     mpv_observe_property(mpv, 0, "duration", MPV_FORMAT_DOUBLE);
     mpv_observe_property(mpv, 0, "time-pos", MPV_FORMAT_DOUBLE);
     mpv_observe_property(mpv, 0, "idle-active", MPV_FORMAT_FLAG);
+
+    mpv_observe_property(mpv, 0, "force-window", MPV_FORMAT_FLAG);
 
     connect(this, &MpvObject::mpv_events, this, &MpvObject::on_mpv_events,Qt::QueuedConnection);
     mpv_set_wakeup_callback(mpv, wakeup, this);
@@ -230,6 +233,16 @@ void MpvObject::handle_mpv_event(mpv_event *event)
             }
         }
 
+
+
+        if (strcmp(prop->name, "force-window") == 0) {
+            if (prop->format == MPV_FORMAT_FLAG) {
+
+                bool windowMode = *(bool *)prop->data;
+                propertyChanged("force-window",windowMode);
+                qDebug() << "Forzar ventana: " << windowMode;
+            }
+        }
         break;
 
     }

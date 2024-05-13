@@ -2,6 +2,7 @@
 #define MPVRENDERER_H_
 
 #include <QtQuick/QQuickFramebufferObject>
+#include <QQuickItem>
 #include <QString>
 #include <QVariant>
 
