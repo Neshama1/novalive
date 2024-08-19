@@ -82,27 +82,56 @@ Maui.Page {
         horizontalScrollBarPolicy: ScrollBar.AsNeeded
         verticalScrollBarPolicy: ScrollBar.AsNeeded
 
-        spacing: 10
+        Component.onCompleted: {
+            scale = 1
+            opacity = 1
+        }
+
+        spacing: 13
 
         model: notificationsModel
 
         delegate: Rectangle {
             color: "transparent"
             width: ListView.view.width
-            height: 80
+            height: 50
             Maui.SwipeBrowserDelegate
             {
                 anchors.fill: parent
+
                 label1.text: station
                 label2.text: title + " at " + time
+
+                template.label1.font.pixelSize: 13
+                template.label2.font.pixelSize: 11
+
                 //iconSource: favicon
                 iconSizeHint: Maui.Style.iconSizes.medium
+
+                Behavior on scale {
+                    NumberAnimation {
+                        duration: 1000
+                        easing.type: Easing.OutExpo
+                    }
+                }
+
+                Behavior on opacity {
+                    NumberAnimation { duration: 1000 }
+                }
+
+                scale: 0.80
+                opacity: 0
+
+                Component.onCompleted: {
+                    scale = 1
+                    opacity = 1
+                }
 
                 quickActions: [
                     Action
                     {
                         icon.name: "media-playback-start"
-                        text: "Play title on YouTube"
+                        text: "Play"
                         onTriggered: {
                             list.currentIndex = index
                             notificationsCurrentIndex = index
