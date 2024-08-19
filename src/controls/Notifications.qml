@@ -102,7 +102,7 @@ Maui.Page {
                 label1.text: station
                 label2.text: title + " at " + time
 
-                template.label1.font.pixelSize: 13
+                template.label1.font.pixelSize: 12
                 template.label2.font.pixelSize: 11
 
                 //iconSource: favicon
