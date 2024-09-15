@@ -129,8 +129,9 @@ Maui.Page {
                             list.currentIndex = index
                             if (!savedStation()) {
                                 favoritesModel.append(stationsByCountryModel.get(list.currentIndex))
+                                sortModel()
+                                saveFavorites()
                             }
-                            sortModel()
                         }
                     },
 

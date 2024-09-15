@@ -28,6 +28,11 @@ Maui.ApplicationWindow
     property string currentStation
     property string currentTitle
     property string playingInfoOnChangedPage
+    property string favorites: ""
+
+    Settings {
+        property alias favorites: root.favorites
+    }
 
     signal titleChanged()
 
@@ -240,5 +245,17 @@ Maui.ApplicationWindow
                 anchors.fill: parent
             }
         }
+    }
+
+    function saveFavorites()
+    {
+        var datamodel = []
+
+        // Guardar favoritos en ~/.config/KDE/novalive.conf
+        for (var i = 0; i < favoritesModel.count; i++)
+        {
+            datamodel.push(favoritesModel.get(i))
+        }
+        favorites = JSON.stringify(datamodel)
     }
 }

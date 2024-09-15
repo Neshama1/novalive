@@ -43,6 +43,7 @@ Maui.Page {
     headBar.middleContent: Maui.SearchField {
         anchors.horizontalCenter: parent.horizontalCenter
         onAccepted: {
+            searchModel.clear()
             search(text)
         }
     }
@@ -95,7 +96,6 @@ Maui.Page {
                 print('DONE');
                 var obj = JSON.parse(xhr.responseText.toString());
 
-                searchModel.clear()
                 results = obj.length
 
                 for(var i=0; i<obj.length; i++) {
@@ -149,8 +149,9 @@ Maui.Page {
                             list.currentIndex = index
                             if (!savedStation()) {
                                 favoritesModel.append(searchModel.get(list.currentIndex))
+                                sortModel()
+                                saveFavorites()
                             }
-                            sortModel()
                         }
                     },
 

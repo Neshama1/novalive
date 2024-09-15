@@ -41,12 +41,6 @@ Maui.Page {
         }
     }
 
-    property string favorites: ""
-
-    Settings {
-        property alias favorites: favoritesPage.favorites
-    }
-
     Component.onCompleted: {
         opacityAnimation.start()
         xAnimation.start()
@@ -61,17 +55,6 @@ Maui.Page {
                 favoritesModel.append(datamodel[i])
             }
         }
-    }
-
-    Component.onDestruction: {
-        var datamodel = []
-
-        // Guardar favoritos en ~/.config/KDE/novalive.conf
-        for (var i = 0; i < favoritesModel.count; ++i)
-        {
-            datamodel.push(favoritesModel.get(i))
-        }
-        favorites = JSON.stringify(datamodel)
     }
 
     PropertyAnimation {
