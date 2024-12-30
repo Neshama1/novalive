@@ -49,6 +49,12 @@ endif()
 
 find_package(MauiKit4 REQUIRED COMPONENTS FileBrowsing)
 
+if(ANDROID)
+    find_package(taglib REQUIRED)
+else()
+    find_package(TagLib REQUIRED)
+endif()
+
 if(UNIX AND NOT APPLE AND NOT ANDROID)
     include(KDEInstallDirs)
     include(KDECMakeSettings)

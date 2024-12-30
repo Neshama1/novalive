@@ -99,6 +99,7 @@ target_link_libraries(${PROJECT_NAME}
     ${AVFORMAT_LIBRARIES}
     ${SWSCALE_LIBRARIES}
     ${AVUTIL_LIBRARIES}
-    ${AVFILTER_LIBRARIES})
+    ${AVFILTER_LIBRARIES}
+    ${Taglib_LIBRARIES})
 
 qt_finalize_target(${PROJECT_NAME})
