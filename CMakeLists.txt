@@ -5,7 +5,7 @@
 
 cmake_minimum_required(VERSION 3.16)
 
-set(NOVALIVE_VERSION 4.0.0)
+set(NOVALIVE_VERSION 0.1.15)
 add_compile_definitions(APP_COPYRIGHT_NOTICE="© 2019-2024 Maui Development Team")
 
 project(novalive VERSION ${NOVALIVE_VERSION} LANGUAGES CXX)

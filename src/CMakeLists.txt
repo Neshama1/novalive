@@ -1,6 +1,6 @@
 remove_definitions(-DQT_NO_CAST_FROM_ASCII -DQT_STRICT_ITERATORS -DQT_NO_CAST_FROM_BYTEARRAY -DQT_NO_URL_CAST_FROM_STRING)
 
-set(clipSRCS
+set(NOVALIVE_SRCS
     code/main.cpp
     code/genresbackend.cpp
     code/countrybackend.cpp
@@ -8,22 +8,22 @@ set(clipSRCS
     code/mpvrenderer.cpp
     code/qthelper.hpp)
 
-set(clip_ASSETS
+set(NOVALIVE_ASSETS
     assets/assets.qrc)
 
 if(ANDROID)
     qt_add_executable(${PROJECT_NAME}
         MANUAL_FINALIZATION
-        ${clipSRCS}
-        ${clip_ASSETS})
+        ${NOVALIVE_SRCS}
+        ${NOVALIVE_ASSETS})
     set_property(TARGET ${PROJECT_NAME} APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/android_files)
     configure_file(${CMAKE_CURRENT_SOURCE_DIR}/android_files/version.gradle.in ${CMAKE_BINARY_DIR}/src/version.gradle)
 else()
-    list(APPEND clipSRCS)
+    #list(APPEND clipSRCS)
     #qt_add_dbus_interface(clipSRCS controllers/linux/org.freedesktop.ScreenSaver.xml screensaverdbusinterface)
     qt_add_executable(${PROJECT_NAME}
-        ${clipSRCS}
-        ${clip_ASSETS})
+        ${NOVALIVE_SRCS}
+        ${NOVALIVE_ASSETS})
 endif()
 
 qt_add_qml_module(${PROJECT_NAME} URI org.kde.novalive
