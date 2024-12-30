@@ -1,72 +1,62 @@
-# Copyright 2018-2020 Camilo Higuita <milo.h@aol.com>
-# Copyright 2018-2020 Nitrux Latinoamericana S.C.
-#
-# SPDX-License-Identifier: GPL-3.0-or-later
-
+# CMAKE MINIMUM
 cmake_minimum_required(VERSION 3.16)
 
-set(NOVALIVE_VERSION 4.0.0)
-add_compile_definitions(APP_COPYRIGHT_NOTICE="© 2019-2024 Maui Development Team")
-
+# PROJECT
+set(NOVALIVE_VERSION 0.1.15)
 project(novalive VERSION ${NOVALIVE_VERSION} LANGUAGES CXX)
+set(PROJECT_URI "org.kde.novalive")
 
+# VERSIONS
+set(QT_MAJOR_VERSION 6)
+set(REQUIRED_QT_VERSION 6.5.2)
+set(REQUIRED_KF_VERSION 5.240.0)
+
+# CMAKE OPTIONS
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 
-set(QT_MAJOR_VERSION 6)
-set(REQUIRED_QT_VERSION 6.5.2)
-
-set(REQUIRED_KF_VERSION 5.240.0)
-
-# Certain versions of FFMPEG need this to be defined
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D __STDC_CONSTANT_MACROS")
-
+# OPTIONS
 if(ANDROID)
     set(ANDROID_ABIS "armeabi-v7a")
 endif()
 
+# BUILD REQUIRES
 find_package(ECM ${REQUIRED_KF_VERSION} REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake" ${ECM_MODULE_PATH})
-
-find_package(Qt6 ${REQUIRED_QT_VERSION} REQUIRED NO_MODULE COMPONENTS Core Sql Qml Quick Multimedia Network)
-find_package(KF6 ${REQUIRED_KF_VERSION} REQUIRED COMPONENTS I18n Config CoreAddons)
-
+find_package(Qt6 ${REQUIRED_QT_VERSION} REQUIRED NO_MODULE COMPONENTS Core Quick Qml Widgets Multimedia QuickControls2)
+find_package(KF6 ${REQUIRED_KF_VERSION} REQUIRED COMPONENTS I18n CoreAddons Config)
+find_package(MauiKit4)
 find_package(FFmpeg COMPONENTS REQUIRED AVCODEC AVFORMAT SWSCALE)
-
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(MPV REQUIRED IMPORTED_TARGET mpv)
 
 if(ANDROID)
-    find_package(taglib 1.4 REQUIRED)
-else()
-    find_package(TagLib 1.4 REQUIRED)
-endif()
-if(ANDROID)
     find_package(Qt6 ${REQUIRED_QT_VERSION} REQUIRED NO_MODULE COMPONENTS QuickControls2)
-else()
-    find_package(KF6 ${REQUIRED_KF_VERSION} REQUIRED COMPONENTS DBusAddons)
-    find_package(Qt6 ${REQUIRED_QT_VERSION} REQUIRED COMPONENTS Widgets DBus)
 endif()
 
-find_package(MauiKit4 REQUIRED COMPONENTS FileBrowsing)
-
+# INCLUDE
 if(UNIX AND NOT APPLE AND NOT ANDROID)
     include(KDEInstallDirs)
     include(KDECMakeSettings)
 endif()
-
 include(KDECompilerSettings NO_POLICY_SCOPE)
 include(KDEClangFormat)
 include(ECMSetupVersion)
 include(ECMSourceVersionControl)
 include(FeatureSummary)
 
-option (MPV_AVAILABLE "Use MPV library if it is avalibale, otherwise use default fallback implementation from QtMultimedia" FALSE)
+# POLICIES
+if(QT_KNOWN_POLICY_QTP0001)
+    qt_policy(SET QTP0001 NEW)
+endif()
+if(QT_KNOWN_POLICY_QTP0004)
+    qt_policy(SET QTP0004 NEW)
+endif()
 
+# GIT
 if(${ECM_SOURCE_UNDER_VERSION_CONTROL})
     execute_process(
         COMMAND git rev-parse --abbrev-ref HEAD
@@ -93,8 +83,10 @@ ecm_setup_version(${NOVALIVE_VERSION}
     VARIABLE_PREFIX NOVALIVE
     VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/novalive_version.h")
 
+# SUBDIRECTORIES WITH CMAKEFILES
 add_subdirectory(src)
 
+# INSTALL
 ki18n_install(po)
 install(FILES src/data/project.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR} RENAME ${PROJECT_URI}.appdata.xml)
 install(FILES src/data/project.desktop DESTINATION ${KDE_INSTALL_APPDIR} RENAME ${PROJECT_URI}.desktop)
@@ -106,4 +98,3 @@ file(GLOB_RECURSE ALL_CLANG_FORMAT_SOURCE_FILES *.cpp *.h)
 kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
 
 qt_finalize_project()
-

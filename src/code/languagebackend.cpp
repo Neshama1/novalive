@@ -35,5 +35,5 @@ void LanguageBackend::setLanguage(const QStringList& language)
     }
 
     m_language = language;
-    emit languageChanged(m_language);
+    Q_EMIT languageChanged(m_language);
 }

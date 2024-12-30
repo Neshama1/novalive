@@ -1,66 +1,115 @@
+#ifdef Q_OS_ANDROID
+#include <QGuiApplication>
+#else
 #include <QApplication>
+#endif
+
 #include <QQmlApplicationEngine>
 #include <QCommandLineParser>
 #include <QDate>
 #include <QIcon>
 #include <QQmlContext>
 
-#include <MauiKit3/Core/mauiapp.h>
+#include <MauiKit4/Core/mauiapp.h>
+#include <MauiKit4/FileBrowsing/fmstatic.h>
+#include <MauiKit4/FileBrowsing/moduleinfo.h>
 
 #include <KAboutData>
-#include <KI18n/KLocalizedString>
+#include <KLocalizedString>
 
-#include "../project_version.h"
+#include "../novalive_version.h"
 
 #include "genresbackend.h"
 #include "countrybackend.h"
 #include "languagebackend.h"
 #include "mpvrenderer.h"
 
-//Useful for setting quickly an app template
-#define ORG_NAME "KDE"
-#define PROJECT_NAME "Nova Live"
-#define COMPONENT_NAME "novalive"
-#define PROJECT_DESCRIPTION "Internet radio player based on Radio Browser, a free database that provides access to a station database with over 40,000 stations"
-#define PROJECT_YEAR "2023"
-#define PRODUCT_NAME "novalive"
-#define PROJECT_PAGE "https://www.novaflowos.com"
-#define REPORT_PAGE "https://bugs.kde.org/enter_bug.cgi?product=novalive"
+#include <QDirIterator>
+#include <QFileInfo>
+#include <taglib/taglib.h>
+#include <libavutil/avutil.h>
 
-int main(int argc, char *argv[])
+#define NOVALIVE_URI "org.kde.novalive"
+
+Q_DECL_EXPORT int main(int argc, char *argv[])
 {
-    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-
+#ifdef Q_OS_ANDROID
+    QGuiApplication app(argc, argv);
+    if (!MAUIAndroid::checkRunTimePermissions({"android.permission.WRITE_EXTERNAL_STORAGE"}))
+        return -1;
+#else
     QApplication app(argc, argv);
-    setlocale(LC_NUMERIC, "C");
+#endif
 
-    app.setOrganizationName(QStringLiteral(ORG_NAME));
+    // Qt sets the locale in the QGuiApplication constructor, but libmpv
+    // requires the LC_NUMERIC category to be set to "C", so change it back.
+    std::setlocale(LC_NUMERIC, "C");
+
+    app.setOrganizationName("KDE");
     app.setWindowIcon(QIcon(":/logo.png"));
+    QGuiApplication::setDesktopFileName(QStringLiteral("project"));
 
-    KLocalizedString::setApplicationDomain(COMPONENT_NAME);
+    KLocalizedString::setApplicationDomain("novalive");
+    KAboutData about(QStringLiteral("novalive"),
+                     QStringLiteral("novalive"),
+                     NOVALIVE_VERSION_STRING,
+                     i18n("Browse and play your videos."),
+                     KAboutLicense::LGPL_V3,
+                     APP_COPYRIGHT_NOTICE,
+                     QString(GIT_BRANCH) + "/" + QString(GIT_COMMIT_HASH));
 
-    KAboutData about(QStringLiteral(COMPONENT_NAME), i18n(PROJECT_NAME), PROJECT_VERSION_STRING, i18n(PROJECT_DESCRIPTION),
-                     KAboutLicense::LGPL_V3, QString("© %1-%2 %3 Development Team").arg(PROJECT_YEAR, QString::number(QDate::currentDate().year()), ORG_NAME), QString(GIT_BRANCH) + "/" + QString(GIT_COMMIT_HASH));
-
-    about.addAuthor(i18n("Miguel Beltrán"), i18n("Developer"), QStringLiteral("hopeandtruth6517@gmail.com"));
-
-    about.setHomepage(PROJECT_PAGE);
-    about.setProductName(PRODUCT_NAME);
-    about.setBugAddress(REPORT_PAGE);
-    about.setOrganizationDomain(PROJECT_URI);
+    about.addAuthor(QStringLiteral("Miguel Beltrán"), i18n("Developer"), QStringLiteral("hopeandtruth6517@gmail.com"));
+    about.setHomepage("https://www.novaflowos.com");
+    about.setProductName("novalive");
+    about.setBugAddress("https://bugs.kde.org/enter_bug.cgi?product=novalive");
+    about.setOrganizationDomain(NOVALIVE_URI);
     about.setProgramLogo(app.windowIcon());
-    //about.addComponent("Akonadi");
-    about.addCredit(i18n("MauiKit Developers"));
+
+    const auto FBData = MauiKitFileBrowsing::aboutData();
+    about.addComponent(FBData.name(), MauiKitFileBrowsing::buildVersion(), FBData.version(), FBData.webAddress());
+
+//    about.addComponent("FFmpeg", "", QString::fromLatin1(av_version_info()), QString::fromLatin1(avutil_license()));
+
+    qputenv("QML_DISABLE_DISK_CACHE", "1");
+
+#ifdef MPV_AVAILABLE
+    about.addComponent("MPV");
+#endif
+
+    about.addComponent("TagLib",
+                       "",
+                       QString("%1.%2.%3").arg(QString::number(TAGLIB_MAJOR_VERSION),QString::number(TAGLIB_MINOR_VERSION),QString::number(TAGLIB_PATCH_VERSION)),
+                       "https://taglib.org/api/index.html");
 
     KAboutData::setApplicationData(about);
     MauiApp::instance()->setIconName("qrc:/assets/logo.svg");
 
     QCommandLineParser parser;
-    parser.setApplicationDescription(about.shortDescription());
+
+    about.setupCommandLine(&parser);
     parser.process(app);
+
     about.processCommandLine(&parser);
 
+    const QStringList args = parser.positionalArguments();
+
+    QPair<QString, QList<QUrl>> arguments;
+    arguments.first = "collection";
+
+    if(!args.isEmpty())
+    {
+        arguments.first = "viewer";
+    }
+
     QQmlApplicationEngine engine;
+    const QUrl url(QStringLiteral("qrc:/org/kde/novalive/controls/main.qml"));
+    QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
+                     &app, [url, &arguments](QObject *obj, const QUrl &objUrl)
+    {
+        if (!obj && url == objUrl)
+            QCoreApplication::exit(-1);
+
+    }, Qt::QueuedConnection);
 
     GenresBackend genresbackend;
     qmlRegisterSingletonInstance<GenresBackend>("org.kde.novalive", 1, 0, "GenresBackend", &genresbackend);
@@ -78,13 +127,15 @@ int main(int argc, char *argv[])
 
     engine.rootContext()->setContextObject(new KLocalizedContext(&engine));
 
-    const QUrl url(QStringLiteral("qrc:/main.qml"));
-    QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
-                     &app, [url](QObject *obj, const QUrl &objUrl) {
-        if (!obj && url == objUrl)
-            QCoreApplication::exit(-1);
-    }, Qt::QueuedConnection);
+    engine.rootContext()->setContextProperty("initModule", arguments.first);
+    engine.rootContext()->setContextProperty("initData", QUrl::toStringList(arguments.second));
+
     engine.load(url);
+
+#ifdef Q_OS_MACOS
+    //    MAUIMacOS::removeTitlebarFromWindow();
+    //    MauiApp::instance()->setEnableCSD(true); //for now index can not handle cloud accounts
+#endif
 
     return app.exec();
 }
