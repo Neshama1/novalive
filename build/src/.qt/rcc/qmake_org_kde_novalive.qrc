@@ -1,6 +1,0 @@
-<RCC>
-  <qresource prefix="/org/kde/novalive">
-    <file alias="qmldir">/home/mike/Devel/GitHub/novalive/build/src/org/kde/novalive/qmldir</file>
-  </qresource>
-</RCC>
-
