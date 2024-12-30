@@ -81,9 +81,6 @@ if(MPV_AVAILABLE)
     target_compile_definitions(${PROJECT_NAME} PUBLIC MPV_AVAILABLE)
 endif()
 
-set(Taglib_LIBRARIES
-    TagLib::tag)
-
 target_link_libraries(${PROJECT_NAME}
     PRIVATE
     MauiKit4
@@ -101,7 +98,6 @@ target_link_libraries(${PROJECT_NAME}
     ${AVFORMAT_LIBRARIES}
     ${SWSCALE_LIBRARIES}
     ${AVUTIL_LIBRARIES}
-    ${AVFILTER_LIBRARIES}
-    ${Taglib_LIBRARIES})
+    ${AVFILTER_LIBRARIES})
 
 qt_finalize_target(${PROJECT_NAME})
