@@ -10,6 +10,8 @@ add_compile_definitions(APP_COPYRIGHT_NOTICE="© 2019-2024 Maui Development Team
 
 project(novalive VERSION ${NOVALIVE_VERSION} LANGUAGES CXX)
 
+set(PROJECT_URI org.kde.${PROJECT_NAME})
+
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
