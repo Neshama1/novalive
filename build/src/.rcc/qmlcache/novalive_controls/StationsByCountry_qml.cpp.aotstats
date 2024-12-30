@@ -1,0 +1,324 @@
+[
+    {
+        "moduleFiles": [
+            {
+                "entries": [
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "getStations",
+                        "line": 70
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 695,
+                        "errorMessage": "Cannot access value for name favoritesModel",
+                        "functionName": "savedStation",
+                        "line": 185
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 410,
+                        "errorMessage": "Cannot access value for name favoritesModel",
+                        "functionName": "sortModel",
+                        "line": 195
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 16,
+                        "durationMicroseconds": 473,
+                        "errorMessage": "",
+                        "functionName": "color",
+                        "line": 16
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 23,
+                        "durationMicroseconds": 656,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 13
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 30,
+                        "durationMicroseconds": 719,
+                        "errorMessage": "",
+                        "functionName": "colorSet",
+                        "line": 15
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 19,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on text.",
+                        "functionName": "text",
+                        "line": 24
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 26,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on onTriggered.",
+                        "functionName": "onTriggered",
+                        "line": 26
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 26,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on onTriggered.",
+                        "functionName": "onTriggered",
+                        "line": 32
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 26,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on onTriggered.",
+                        "functionName": "onTriggered",
+                        "line": 38
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 20,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on onClicked.",
+                        "functionName": "onClicked",
+                        "line": 44
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 122,
+                        "errorMessage": "Cannot retrieve a non-object type by ID: playingInfo",
+                        "functionName": "onCompleted",
+                        "line": 47
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 17,
+                        "durationMicroseconds": 54,
+                        "errorMessage": "Cannot retrieve a non-object type by ID: stationsByCountryPage",
+                        "functionName": "target",
+                        "line": 54
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 17,
+                        "durationMicroseconds": 51,
+                        "errorMessage": "Cannot retrieve a non-object type by ID: stationsByCountryPage",
+                        "functionName": "target",
+                        "line": 63
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 36,
+                        "durationMicroseconds": 919,
+                        "errorMessage": "Cannot access value for name ScrollBar",
+                        "functionName": "horizontalScrollBarPolicy",
+                        "line": 95
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 34,
+                        "durationMicroseconds": 517,
+                        "errorMessage": "Cannot access value for name ScrollBar",
+                        "functionName": "verticalScrollBarPolicy",
+                        "line": 96
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 16,
+                        "durationMicroseconds": 864,
+                        "errorMessage": "Cannot access value for name stationsByCountryModel",
+                        "functionName": "model",
+                        "line": 100
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 23,
+                        "durationMicroseconds": 252,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 92
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 20,
+                        "durationMicroseconds": 327,
+                        "errorMessage": "",
+                        "functionName": "width",
+                        "line": 104
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 29,
+                        "durationMicroseconds": 215,
+                        "errorMessage": "Cannot access value for name favicon",
+                        "functionName": "iconSource",
+                        "line": 111
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 31,
+                        "durationMicroseconds": 91,
+                        "errorMessage": "Cannot load property iconSizes from Style.",
+                        "functionName": "iconSizeHint",
+                        "line": 112
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 80,
+                        "errorMessage": "Cannot access value for name list",
+                        "functionName": "onClicked",
+                        "line": 114
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 31,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on fill.",
+                        "functionName": "fill",
+                        "line": 108
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 30,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on text.",
+                        "functionName": "text",
+                        "line": 109
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 30,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on text.",
+                        "functionName": "text",
+                        "line": 110
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 38,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on onTriggered.",
+                        "functionName": "onTriggered",
+                        "line": 141
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 38,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on onTriggered.",
+                        "functionName": "onTriggered",
+                        "line": 128
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 17,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on height.",
+                        "functionName": "height",
+                        "line": 157
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 20,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on onClicked.",
+                        "functionName": "onClicked",
+                        "line": 159
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 25,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on bottom.",
+                        "functionName": "bottom",
+                        "line": 153
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 24,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on right.",
+                        "functionName": "right",
+                        "line": 154
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 20,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on name.",
+                        "functionName": "name",
+                        "line": 158
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 18,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on visible.",
+                        "functionName": "visible",
+                        "line": 168
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 25,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on bottom.",
+                        "functionName": "bottom",
+                        "line": 165
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 24,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on right.",
+                        "functionName": "right",
+                        "line": 166
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 20,
+                        "durationMicroseconds": 3735,
+                        "errorMessage": "",
+                        "functionName": "color",
+                        "line": 174
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 27,
+                        "durationMicroseconds": 218,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 172
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 21,
+                        "durationMicroseconds": 138,
+                        "errorMessage": "Cannot access value for name root",
+                        "functionName": "target",
+                        "line": 178
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 29,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on onTitleChanged.",
+                        "functionName": "onTitleChanged",
+                        "line": 179
+                    }
+                ],
+                "filepath": "/home/mike/Devel/GitHub/novalive/src/controls/StationsByCountry.qml"
+            }
+        ],
+        "moduleId": "org.kde.novalive(novalive)"
+    }
+]

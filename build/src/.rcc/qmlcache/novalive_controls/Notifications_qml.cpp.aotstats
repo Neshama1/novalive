@@ -1,0 +1,260 @@
+[
+    {
+        "moduleFiles": [
+            {
+                "entries": [
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 16,
+                        "durationMicroseconds": 503,
+                        "errorMessage": "",
+                        "functionName": "color",
+                        "line": 16
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 23,
+                        "durationMicroseconds": 172,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 13
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 30,
+                        "durationMicroseconds": 661,
+                        "errorMessage": "",
+                        "functionName": "colorSet",
+                        "line": 15
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 19,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on text.",
+                        "functionName": "text",
+                        "line": 24
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 26,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on onTriggered.",
+                        "functionName": "onTriggered",
+                        "line": 26
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 26,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on onTriggered.",
+                        "functionName": "onTriggered",
+                        "line": 32
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 26,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on onTriggered.",
+                        "functionName": "onTriggered",
+                        "line": 38
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 28,
+                        "durationMicroseconds": 865,
+                        "errorMessage": "",
+                        "functionName": "onCompleted",
+                        "line": 42
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 17,
+                        "durationMicroseconds": 94,
+                        "errorMessage": "Cannot retrieve a non-object type by ID: notificationsPage",
+                        "functionName": "target",
+                        "line": 49
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 17,
+                        "durationMicroseconds": 51,
+                        "errorMessage": "Cannot retrieve a non-object type by ID: notificationsPage",
+                        "functionName": "target",
+                        "line": 58
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 12,
+                        "durationMicroseconds": 574,
+                        "errorMessage": "Cannot access value for name notificationsModel",
+                        "functionName": "visible",
+                        "line": 70
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 10,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on title.",
+                        "functionName": "title",
+                        "line": 71
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 9,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on body.",
+                        "functionName": "body",
+                        "line": 72
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 17,
+                        "durationMicroseconds": 494,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 69
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 36,
+                        "durationMicroseconds": 600,
+                        "errorMessage": "Cannot access value for name ScrollBar",
+                        "functionName": "horizontalScrollBarPolicy",
+                        "line": 82
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 34,
+                        "durationMicroseconds": 463,
+                        "errorMessage": "Cannot access value for name ScrollBar",
+                        "functionName": "verticalScrollBarPolicy",
+                        "line": 83
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 16,
+                        "durationMicroseconds": 699,
+                        "errorMessage": "Cannot access value for name notificationsModel",
+                        "functionName": "model",
+                        "line": 92
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 23,
+                        "durationMicroseconds": 211,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 79
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 32,
+                        "durationMicroseconds": 306,
+                        "errorMessage": "",
+                        "functionName": "onCompleted",
+                        "line": 85
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 20,
+                        "durationMicroseconds": 442,
+                        "errorMessage": "",
+                        "functionName": "width",
+                        "line": 96
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 31,
+                        "durationMicroseconds": 117,
+                        "errorMessage": "Cannot load property iconSizes from Style.",
+                        "functionName": "iconSizeHint",
+                        "line": 109
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 31,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on fill.",
+                        "functionName": "fill",
+                        "line": 100
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 30,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on text.",
+                        "functionName": "text",
+                        "line": 102
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 30,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on text.",
+                        "functionName": "text",
+                        "line": 103
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 38,
+                        "durationMicroseconds": 514,
+                        "errorMessage": "",
+                        "functionName": "type",
+                        "line": 114
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 40,
+                        "durationMicroseconds": 150,
+                        "errorMessage": "Cannot find name scale",
+                        "functionName": "onCompleted",
+                        "line": 125
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 38,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on onTriggered.",
+                        "functionName": "onTriggered",
+                        "line": 135
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 34,
+                        "durationMicroseconds": 568,
+                        "errorMessage": "",
+                        "functionName": "acceptedButtons",
+                        "line": 145
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 126,
+                        "errorMessage": "Cannot access value for name mouse",
+                        "functionName": "onClicked",
+                        "line": 146
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 31,
+                        "durationMicroseconds": 205,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 144
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 38,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on onTriggered.",
+                        "functionName": "onTriggered",
+                        "line": 158
+                    }
+                ],
+                "filepath": "/home/mike/Devel/GitHub/novalive/src/controls/Notifications.qml"
+            }
+        ],
+        "moduleId": "org.kde.novalive(novalive)"
+    }
+]

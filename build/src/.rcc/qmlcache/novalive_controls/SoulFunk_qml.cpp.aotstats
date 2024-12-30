@@ -1,0 +1,404 @@
+[
+    {
+        "moduleFiles": [
+            {
+                "entries": [
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 806,
+                        "errorMessage": "Cannot access value for name soulfunkModel",
+                        "functionName": "fillModel",
+                        "line": 101
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 399,
+                        "errorMessage": "Cannot access value for name soulfunkModel",
+                        "functionName": "sortModel",
+                        "line": 116
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 16,
+                        "durationMicroseconds": 769,
+                        "errorMessage": "",
+                        "functionName": "color",
+                        "line": 18
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 23,
+                        "durationMicroseconds": 198,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 15
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 30,
+                        "durationMicroseconds": 286,
+                        "errorMessage": "",
+                        "functionName": "colorSet",
+                        "line": 17
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 19,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on text.",
+                        "functionName": "text",
+                        "line": 26
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 26,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on onTriggered.",
+                        "functionName": "onTriggered",
+                        "line": 28
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 26,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on onTriggered.",
+                        "functionName": "onTriggered",
+                        "line": 34
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 26,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on onTriggered.",
+                        "functionName": "onTriggered",
+                        "line": 40
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 287,
+                        "errorMessage": "Cannot retrieve a non-object type by ID: playingInfo",
+                        "functionName": "onCompleted",
+                        "line": 50
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 30,
+                        "durationMicroseconds": 477,
+                        "errorMessage": "Cannot access value for name soulfunkModel",
+                        "functionName": "onDestruction",
+                        "line": 72
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 17,
+                        "durationMicroseconds": 70,
+                        "errorMessage": "Cannot retrieve a non-object type by ID: soulfunkPage",
+                        "functionName": "target",
+                        "line": 85
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 17,
+                        "durationMicroseconds": 50,
+                        "errorMessage": "Cannot retrieve a non-object type by ID: soulfunkPage",
+                        "functionName": "target",
+                        "line": 94
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 12,
+                        "durationMicroseconds": 471,
+                        "errorMessage": "Cannot access value for name soulfunkModel",
+                        "functionName": "visible",
+                        "line": 137
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 10,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on title.",
+                        "functionName": "title",
+                        "line": 138
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 9,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on body.",
+                        "functionName": "body",
+                        "line": 139
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 17,
+                        "durationMicroseconds": 10404,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 136
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 36,
+                        "durationMicroseconds": 705,
+                        "errorMessage": "Cannot access value for name ScrollBar",
+                        "functionName": "horizontalScrollBarPolicy",
+                        "line": 151
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 34,
+                        "durationMicroseconds": 494,
+                        "errorMessage": "Cannot access value for name ScrollBar",
+                        "functionName": "verticalScrollBarPolicy",
+                        "line": 152
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 16,
+                        "durationMicroseconds": 592,
+                        "errorMessage": "Cannot access value for name soulfunkModel",
+                        "functionName": "model",
+                        "line": 154
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 23,
+                        "durationMicroseconds": 219,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 146
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 20,
+                        "durationMicroseconds": 391,
+                        "errorMessage": "",
+                        "functionName": "width",
+                        "line": 158
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 21,
+                        "durationMicroseconds": 3136,
+                        "errorMessage": "",
+                        "functionName": "height",
+                        "line": 159
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 24,
+                        "durationMicroseconds": 504,
+                        "errorMessage": "",
+                        "functionName": "color",
+                        "line": 164
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 31,
+                        "durationMicroseconds": 175,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 161
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on width.",
+                        "functionName": "width",
+                        "line": 168
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 29,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on height.",
+                        "functionName": "height",
+                        "line": 169
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 42,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on horizontalAlignment.",
+                        "functionName": "horizontalAlignment",
+                        "line": 170
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 27,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on text.",
+                        "functionName": "text",
+                        "line": 171
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on elide.",
+                        "functionName": "elide",
+                        "line": 173
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 39,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on centerIn.",
+                        "functionName": "centerIn",
+                        "line": 167
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 34,
+                        "durationMicroseconds": 703,
+                        "errorMessage": "",
+                        "functionName": "acceptedButtons",
+                        "line": 178
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 143,
+                        "errorMessage": "Cannot access value for name mouse",
+                        "functionName": "onClicked",
+                        "line": 179
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 31,
+                        "durationMicroseconds": 192,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 177
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 38,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on onTriggered.",
+                        "functionName": "onTriggered",
+                        "line": 201
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 120,
+                        "errorMessage": "Cannot access value for name grid",
+                        "functionName": "onClicked",
+                        "line": 209
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 31,
+                        "durationMicroseconds": 191,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 208
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 17,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on height.",
+                        "functionName": "height",
+                        "line": 229
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 20,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on onClicked.",
+                        "functionName": "onClicked",
+                        "line": 231
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 25,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on bottom.",
+                        "functionName": "bottom",
+                        "line": 225
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 24,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on right.",
+                        "functionName": "right",
+                        "line": 226
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 20,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on name.",
+                        "functionName": "name",
+                        "line": 230
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 18,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on visible.",
+                        "functionName": "visible",
+                        "line": 240
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 25,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on bottom.",
+                        "functionName": "bottom",
+                        "line": 237
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 24,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on right.",
+                        "functionName": "right",
+                        "line": 238
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 20,
+                        "durationMicroseconds": 2711,
+                        "errorMessage": "",
+                        "functionName": "color",
+                        "line": 246
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 27,
+                        "durationMicroseconds": 232,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 244
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 21,
+                        "durationMicroseconds": 132,
+                        "errorMessage": "Cannot access value for name root",
+                        "functionName": "target",
+                        "line": 250
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 29,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on onTitleChanged.",
+                        "functionName": "onTitleChanged",
+                        "line": 251
+                    }
+                ],
+                "filepath": "/home/mike/Devel/GitHub/novalive/src/controls/SoulFunk.qml"
+            }
+        ],
+        "moduleId": "org.kde.novalive(novalive)"
+    }
+]

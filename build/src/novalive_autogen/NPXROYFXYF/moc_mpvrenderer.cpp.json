@@ -1,0 +1,102 @@
+{
+    "classes": [
+        {
+            "className": "MpvObject",
+            "lineNumber": 15,
+            "object": true,
+            "qualifiedClassName": "MpvObject",
+            "signals": [
+                {
+                    "access": "public",
+                    "index": 0,
+                    "name": "onUpdate",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 1,
+                    "name": "mpv_events",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "property",
+                            "type": "QString"
+                        },
+                        {
+                            "name": "data",
+                            "type": "QVariant"
+                        }
+                    ],
+                    "index": 2,
+                    "name": "propertyChanged",
+                    "returnType": "void"
+                }
+            ],
+            "slots": [
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "params",
+                            "type": "QVariant"
+                        }
+                    ],
+                    "index": 3,
+                    "name": "command",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "name",
+                            "type": "QString"
+                        },
+                        {
+                            "name": "value",
+                            "type": "QVariant"
+                        }
+                    ],
+                    "index": 4,
+                    "name": "setProperty",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "name",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 5,
+                    "name": "getProperty",
+                    "returnType": "QVariant"
+                },
+                {
+                    "access": "private",
+                    "index": 6,
+                    "name": "doUpdate",
+                    "returnType": "void"
+                },
+                {
+                    "access": "private",
+                    "index": 7,
+                    "name": "on_mpv_events",
+                    "returnType": "void"
+                }
+            ],
+            "superClasses": [
+                {
+                    "access": "public",
+                    "name": "QQuickFramebufferObject"
+                }
+            ]
+        }
+    ],
+    "inputFile": "mpvrenderer.h",
+    "outputRevision": 68
+}

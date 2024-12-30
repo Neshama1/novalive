@@ -1,0 +1,10 @@
+-I
+/home/mike/Devel/GitHub/novalive/build/src
+-I
+/usr/lib64/qt6/qml
+--resource
+/home/mike/Devel/GitHub/novalive/build/src/.qt/rcc/qmake_org_kde_novalive.qrc
+--resource
+/home/mike/Devel/GitHub/novalive/build/src/.qt/rcc/novalive_raw_qml_0.qrc
+--module
+org.kde.novalive

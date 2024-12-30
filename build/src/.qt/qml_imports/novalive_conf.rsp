@@ -1,0 +1,14 @@
+-rootPath
+/home/mike/Devel/GitHub/novalive/src
+-cmake-output
+-output-file
+/home/mike/Devel/GitHub/novalive/build/src/.qt/qml_imports/novalive_conf.cmake
+-importPath
+/home/mike/Devel/GitHub/novalive/build/src/org/kde/novalive
+-importPath
+/home/mike/Devel/GitHub/novalive/build/src
+-importPath
+/usr/lib64/qt6/qml
+-qrcFiles
+/home/mike/Devel/GitHub/novalive/build/src/.qt/rcc/qmake_org_kde_novalive.qrc
+/home/mike/Devel/GitHub/novalive/build/src/.qt/rcc/novalive_raw_qml_0.qrc

@@ -1,0 +1,140 @@
+[
+    {
+        "moduleFiles": [
+            {
+                "entries": [
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 16,
+                        "durationMicroseconds": 899,
+                        "errorMessage": "",
+                        "functionName": "color",
+                        "line": 15
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 23,
+                        "durationMicroseconds": 199,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 12
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 30,
+                        "durationMicroseconds": 262,
+                        "errorMessage": "",
+                        "functionName": "colorSet",
+                        "line": 14
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 24,
+                        "durationMicroseconds": 268,
+                        "errorMessage": "",
+                        "functionName": "imageSizeHint",
+                        "line": 23
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 21,
+                        "durationMicroseconds": 284,
+                        "errorMessage": "",
+                        "functionName": "maskRadius",
+                        "line": 24
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 19,
+                        "durationMicroseconds": 219,
+                        "errorMessage": "",
+                        "functionName": "fillMode",
+                        "line": 25
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 23,
+                        "durationMicroseconds": 159,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 20
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 16,
+                        "durationMicroseconds": 247,
+                        "errorMessage": "",
+                        "functionName": "width",
+                        "line": 40
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 27,
+                        "durationMicroseconds": 158,
+                        "errorMessage": "",
+                        "functionName": "centerIn",
+                        "line": 29
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 20,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on elide.",
+                        "functionName": "elide",
+                        "line": 74
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 23,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on wrapMode.",
+                        "functionName": "wrapMode",
+                        "line": 75
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 35,
+                        "durationMicroseconds": 120,
+                        "errorMessage": "Cannot access value for name parent",
+                        "functionName": "maximumHeight",
+                        "line": 63
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 37,
+                        "durationMicroseconds": 56,
+                        "errorMessage": "Cannot access value for name parent",
+                        "functionName": "preferredHeight",
+                        "line": 64
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 34,
+                        "durationMicroseconds": 76,
+                        "errorMessage": "Cannot access value for name parent",
+                        "functionName": "maximumWidth",
+                        "line": 66
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 36,
+                        "durationMicroseconds": 53,
+                        "errorMessage": "Cannot access value for name parent",
+                        "functionName": "preferredWidth",
+                        "line": 67
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 24,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on onClicked.",
+                        "functionName": "onClicked",
+                        "line": 83
+                    }
+                ],
+                "filepath": "/home/mike/Devel/GitHub/novalive/src/controls/Home.qml"
+            }
+        ],
+        "moduleId": "org.kde.novalive(novalive)"
+    }
+]

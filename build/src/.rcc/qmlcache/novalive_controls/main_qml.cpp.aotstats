@@ -1,0 +1,220 @@
+[
+    {
+        "moduleFiles": [
+            {
+                "entries": [
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 12,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on width.",
+                        "functionName": "width",
+                        "line": 40
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 13,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on height.",
+                        "functionName": "height",
+                        "line": 41
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 5,
+                        "durationMicroseconds": 323,
+                        "errorMessage": "",
+                        "functionName": "getRadioBrowserServer",
+                        "line": 64
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 98,
+                        "errorMessage": "function without return type annotation returns QJSValue. This may prevent proper compilation to Cpp.",
+                        "functionName": "get_radiobrowser_base_url_random",
+                        "line": 68
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "getStatus",
+                        "line": 88
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 84,
+                        "errorMessage": "function without return type annotation returns QJSValue. This may prevent proper compilation to Cpp.",
+                        "functionName": "get_radiobrowser_base_urls",
+                        "line": 110
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 11175,
+                        "errorMessage": "Cannot generate efficient code for storing an array in a non-sequence type",
+                        "functionName": "saveFavorites",
+                        "line": 284
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 23,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on fill.",
+                        "functionName": "fill",
+                        "line": 56
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 28,
+                        "durationMicroseconds": 221,
+                        "errorMessage": "",
+                        "functionName": "onCompleted",
+                        "line": 60
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 199,
+                        "errorMessage": "Cannot access value for name currentTitle",
+                        "functionName": "onMetaDataChanged",
+                        "line": 134
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 9,
+                        "durationMicroseconds": 496,
+                        "errorMessage": "type Key for argument 0 cannot be resolved",
+                        "functionName": "readMetaData",
+                        "line": 158
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 23,
+                        "durationMicroseconds": 238,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 177
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 34,
+                        "durationMicroseconds": 308,
+                        "errorMessage": "",
+                        "functionName": "colorSet",
+                        "line": 181
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 27,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on fill.",
+                        "functionName": "fill",
+                        "line": 182
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 44,
+                        "durationMicroseconds": 5976,
+                        "errorMessage": "Cannot access value for name ScrollBar",
+                        "functionName": "horizontalScrollBarPolicy",
+                        "line": 203
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 42,
+                        "durationMicroseconds": 502,
+                        "errorMessage": "Cannot access value for name ScrollBar",
+                        "functionName": "verticalScrollBarPolicy",
+                        "line": 204
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 24,
+                        "durationMicroseconds": 289,
+                        "errorMessage": "",
+                        "functionName": "model",
+                        "line": 210
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 31,
+                        "durationMicroseconds": 182,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 200
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on width.",
+                        "functionName": "width",
+                        "line": 213
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 33,
+                        "durationMicroseconds": 221,
+                        "errorMessage": "Cannot access value for name icon",
+                        "functionName": "iconSource",
+                        "line": 221
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 32,
+                        "durationMicroseconds": 107,
+                        "errorMessage": "Cannot retrieve a non-object type by ID: mpvPlayer",
+                        "functionName": "onClicked",
+                        "line": 223
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 34,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on text.",
+                        "functionName": "text",
+                        "line": 215
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 34,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on text.",
+                        "functionName": "text",
+                        "line": 216
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 27,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on fill.",
+                        "functionName": "fill",
+                        "line": 269
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 36,
+                        "durationMicroseconds": 76,
+                        "errorMessage": "Cannot retrieve a non-object type by ID: stackView",
+                        "functionName": "onCompleted",
+                        "line": 273
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 31,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on fill.",
+                        "functionName": "fill",
+                        "line": 279
+                    }
+                ],
+                "filepath": "/home/mike/Devel/GitHub/novalive/src/controls/main.qml"
+            }
+        ],
+        "moduleId": "org.kde.novalive(novalive)"
+    }
+]

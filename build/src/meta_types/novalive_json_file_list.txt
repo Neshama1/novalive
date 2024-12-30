@@ -1,0 +1,4 @@
+/home/mike/Devel/GitHub/novalive/build/src/novalive_autogen/include/../NPXROYFXYF/moc_countrybackend.cpp.json
+/home/mike/Devel/GitHub/novalive/build/src/novalive_autogen/include/../NPXROYFXYF/moc_genresbackend.cpp.json
+/home/mike/Devel/GitHub/novalive/build/src/novalive_autogen/include/../NPXROYFXYF/moc_languagebackend.cpp.json
+/home/mike/Devel/GitHub/novalive/build/src/novalive_autogen/include/../NPXROYFXYF/moc_mpvrenderer.cpp.json
