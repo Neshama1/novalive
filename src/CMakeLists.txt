@@ -12,7 +12,7 @@ set(NOVALIVE_ASSETS
     assets/assets.qrc)
 
 if(ANDROID)
-    add_executable(${PROJECT_NAME}
+    qt_add_executable(${PROJECT_NAME}
         MANUAL_FINALIZATION
         ${NOVALIVE_SRCS}
         ${NOVALIVE_ASSETS})
@@ -21,7 +21,7 @@ if(ANDROID)
 else()
     #list(APPEND clipSRCS)
     #qt_add_dbus_interface(clipSRCS controllers/linux/org.freedesktop.ScreenSaver.xml screensaverdbusinterface)
-    add_executable(${PROJECT_NAME}
+    qt_add_executable(${PROJECT_NAME}
         ${NOVALIVE_SRCS}
         ${NOVALIVE_ASSETS})
 endif()

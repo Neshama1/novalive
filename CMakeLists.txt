@@ -99,6 +99,7 @@ ecm_setup_version(${NOVALIVE_VERSION}
 add_subdirectory(src)
 
 ki18n_install(po)
+install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION bin)
 
 feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
 
