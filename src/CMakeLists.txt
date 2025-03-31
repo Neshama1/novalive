@@ -100,7 +100,7 @@ target_link_libraries(${PROJECT_NAME}
     ${SWSCALE_LIBRARIES}
     ${AVUTIL_LIBRARIES}
     ${AVFILTER_LIBRARIES}
-    TagLib::tag)
+    ${Taglib_LIBRARIES})
 
 install(FILES data/project.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR} RENAME ${PROJECT_URI}.appdata.xml)
 install(FILES data/project.desktop DESTINATION ${KDE_INSTALL_APPDIR} RENAME ${PROJECT_URI}.desktop)
