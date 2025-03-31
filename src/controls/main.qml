@@ -58,19 +58,7 @@ Maui.ApplicationWindow
     }
 
     Component.onCompleted: {
-        getFavorites()
         getRadioBrowserServer()
-    }
-
-    function getFavorites() {
-        if (favoritesModel.count == 0) {
-            // Leer favoritos de ~/.config/KDE/novalive.conf
-            var datamodel = JSON.parse(favorites)
-            for (var i = 0; i < datamodel.length; ++i)
-            {
-                favoritesModel.append(datamodel[i])
-            }
-        }
     }
 
     function getRadioBrowserServer() {
