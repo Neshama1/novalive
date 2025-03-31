@@ -58,7 +58,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
                      APP_COPYRIGHT_NOTICE,
                      QString(GIT_BRANCH) + "/" + QString(GIT_COMMIT_HASH));
 
-    about.addAuthor(QStringLiteral("Miguel Beltrán"), i18n("Developer"), QStringLiteral("novaflowos@gmail.com"));
+    about.addAuthor(QStringLiteral("Miguel Beltrán"), i18n("Developer"), QStringLiteral("hopeandtruth6517@gmail.com"));
     about.setHomepage("https://www.novaflowos.com");
     about.setProductName("novalive");
     about.setBugAddress("https://bugs.kde.org/enter_bug.cgi?product=novalive");
