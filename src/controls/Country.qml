@@ -1,11 +1,11 @@
-import QtQuick
-import QtQuick.Controls
-import org.mauikit.controls as Maui
+import QtQuick 2.15
+import QtQuick.Controls 2.15
+import org.mauikit.controls 1.3 as Maui
 
 Maui.Page {
     id: countryPage
 
-    Maui.Controls.showCSD: true
+    showCSDControls: true
 
     headBar.background: Rectangle {
         anchors.fill: parent
@@ -73,7 +73,7 @@ Maui.Page {
                 onClicked: {
                     countriesCurrentIndex = index
                     stationsByCountryModel.clear()
-                    stackView.push("qrc:/org/kde/novalive/controls/StationsByCountry.qml")
+                    stackView.push("qrc:/StationsByCountry.qml")
                 }
             }
         }

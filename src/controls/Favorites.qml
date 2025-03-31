@@ -1,13 +1,13 @@
-import QtQuick
-import QtQuick.Controls
-import org.mauikit.controls as Maui
-import Qt.labs.settings
-import QtMultimedia
+import QtQuick 2.15
+import QtQuick.Controls 2.15
+import org.mauikit.controls 1.3 as Maui
+import Qt.labs.settings 1.0
+import QtMultimedia 5.15
 
 Maui.Page {
     id: favoritesPage
 
-    Maui.Controls.showCSD: true
+    showCSDControls: true
 
     property int rightStationIndex
 

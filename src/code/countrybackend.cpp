@@ -42,7 +42,7 @@ void CountryBackend::setName(const QStringList& name)
     }
 
     m_name = name;
-    Q_EMIT nameChanged(m_name);
+    emit nameChanged(m_name);
 }
 
 QStringList CountryBackend::code() const
@@ -57,5 +57,5 @@ void CountryBackend::setCode(const QStringList& code)
     }
 
     m_code = code;
-    Q_EMIT codeChanged(m_code);
+    emit codeChanged(m_code);
 }

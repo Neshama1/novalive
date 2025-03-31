@@ -28,12 +28,12 @@ public:
     virtual ~MpvObject();
     virtual Renderer *createRenderer() const;
 
-public Q_SLOTS:
+public slots:
     void command(const QVariant& params);
     void setProperty(const QString& name, const QVariant& value);
     QVariant getProperty(const QString &name) const;
 
-Q_SIGNALS:
+signals:
     void onUpdate();
     void mpv_events();
     void propertyChanged(QString property, QVariant data);
@@ -41,7 +41,7 @@ Q_SIGNALS:
 private:
     void handle_mpv_event(mpv_event *event);
 
-private Q_SLOTS:
+private slots:
     void doUpdate();
     void on_mpv_events();
 };

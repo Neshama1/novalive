@@ -1,11 +1,11 @@
-import QtQuick
-import QtQuick.Controls
-import org.mauikit.controls as Maui
+import QtQuick 2.15
+import QtQuick.Controls 2.15
+import org.mauikit.controls 1.3 as Maui
 
 Maui.Page {
     id: genresPage
 
-    Maui.Controls.showCSD: true
+    showCSDControls: true
 
     headBar.background: Rectangle {
         anchors.fill: parent
@@ -74,7 +74,7 @@ Maui.Page {
                 onClicked: {
                     genresCurrentIndex = index
                     stationsByGenreModel.clear()
-                    stackView.push("qrc:/org/kde/novalive/controls/StationsByGenre.qml")
+                    stackView.push("qrc:/StationsByGenre.qml")
                 }
             }
         }

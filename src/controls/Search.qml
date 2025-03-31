@@ -1,12 +1,12 @@
-import QtQuick
-import QtQuick.Controls
-import org.mauikit.controls as Maui
-import QtMultimedia
+import QtQuick 2.15
+import QtQuick.Controls 2.15
+import org.mauikit.controls 1.3 as Maui
+import QtMultimedia 5.15
 
 Maui.Page {
     id: searchPage
 
-    Maui.Controls.showCSD: true
+    showCSDControls: true
 
     property int results: -1
 

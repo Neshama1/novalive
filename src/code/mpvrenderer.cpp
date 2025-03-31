@@ -77,6 +77,8 @@ public:
 
     void render()
     {
+        obj->window()->resetOpenGLState();
+
         QOpenGLFramebufferObject *fbo = framebufferObject();
         mpv_opengl_fbo mpfbo{.fbo = static_cast<int>(fbo->handle()), .w = fbo->width(), .h = fbo->height(), .internal_format = 0};
         int flip_y{0};
@@ -94,6 +96,8 @@ public:
         // See render_gl.h on what OpenGL environment mpv expects, and
         // other API details.
         mpv_render_context_render(obj->mpv_gl, params);
+
+        obj->window()->resetOpenGLState();
     }
 };
 
@@ -105,7 +109,7 @@ static void wakeup(void *ctx)
     // mpv_wait_event()), and return as quickly as possible.
 
     MpvObject *mpvobject = (MpvObject *)ctx;
-    Q_EMIT mpvobject->mpv_events();
+    emit mpvobject->mpv_events();
 }
 
 MpvObject::MpvObject(QQuickItem * parent)
@@ -150,7 +154,7 @@ MpvObject::~MpvObject()
 void MpvObject::on_update(void *ctx)
 {
     MpvObject *self = (MpvObject *)ctx;
-    Q_EMIT self->onUpdate();
+    emit self->onUpdate();
 }
 
 // connected to onUpdate(); signal makes sure it runs on the GUI thread
@@ -249,6 +253,7 @@ void MpvObject::handle_mpv_event(mpv_event *event)
 
 QQuickFramebufferObject::Renderer *MpvObject::createRenderer() const
 {
+    window()->setPersistentOpenGLContext(true);
     window()->setPersistentSceneGraph(true);
     return new MpvRenderer(const_cast<MpvObject *>(this));
 }

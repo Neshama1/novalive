@@ -35,5 +35,5 @@ void GenresBackend::setGenres(const QStringList& genres)
     }
 
     m_genres = genres;
-    Q_EMIT genresChanged(m_genres);
+    emit genresChanged(m_genres);
 }

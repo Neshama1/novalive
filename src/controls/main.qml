@@ -1,11 +1,11 @@
-import QtQuick
-import QtQuick.Controls
-import org.mauikit.controls as Maui
-import QtMultimedia
-import QtQml
-import Qt.labs.settings
-import org.kde.novalive
-import QtQuick.Window
+import QtQuick 2.15
+import QtQuick.Controls 2.15
+import org.mauikit.controls 1.3 as Maui
+import QtMultimedia 5.15
+import QtQml 2.0
+import Qt.labs.settings 1.0
+import org.kde.novalive 1.0
+import QtQuick.Window 2.2
 
 Maui.ApplicationWindow
 {
@@ -19,7 +19,6 @@ Maui.ApplicationWindow
     ListModel { id: stationsByCountryModel }
     ListModel { id: stationsByLanguageModel }
     ListModel { id: youTubeModel }
-    ListModel { id: metaDataModel }
 
     property string baseUrl
     property int genresCurrentIndex
@@ -129,46 +128,16 @@ Maui.ApplicationWindow
     MediaPlayer {
         id: player
 
-        audioOutput: AudioOutput {}
-
-        onMetaDataChanged: {
+        metaData.onMetaDataChanged: {
             if (currentTitle != player.metaData.title)
             {
-                readMetaData()
                 var timeString = new Date().toLocaleTimeString(Qt.locale("es_ES"))
-
-                //currentTitle = metaData.Title
-                //currentTitle = metaData.metaDataKeyToString("")
-
-                for (var i = 0; i < metaDataModel.count; i++) {
-                    var mdKey = metaDataModel.get(i).mdKey
-                    var mdKeyString = metaDataModel.get(i).mdKeyString
-                    var mdValue= metaDataModel.get(i).mdValue
-                    var mdValueString = metaDataModel.get(i).mdValueString
-                    console.info(mdKey, mdKeyString, mdValue, mdValueString)
-                }
-
+                currentTitle = player.metaData.title
                 const artistsong = currentTitle.split(" - ");
                 notificationsModel.insert(0, {"title": currentTitle, "station": currentStation ,"artist": artistsong[0], "song": artistsong[1], "time": timeString})
                 playingInfoOnChangedPage = currentStation + " playing " + currentTitle
                 root.titleChanged()
             }
-        }
-
-        function readMetaData()
-        {
-            metaDataModel.clear()
-            for (var key = 0; key < 29; key++) {
-                metaDataModel.append({"mdKey": key,"mdKeyString": player.metaData.metaDataKeyToString(key), "mdValue": player.metaData.value(key), "mdValueString": player.metaData.stringValue(key)})
-            }
-
-            /*
-            if (player.metaData) {
-                for (var key of player.metaData.keys()) {
-                    metaDataModel.append({"key": key,"stringKey": player.metaData.metaDataKeyToString(key), "value": player.metaData.value(key), "stringValue": player.metaData.stringValue(key)})
-                }
-            }
-            */
         }
     }
 
@@ -215,9 +184,6 @@ Maui.ApplicationWindow
                     label1.text: name
                     label2.text: description
 
-                    template.label1.font.pixelSize: 16
-                    template.label2.font.pixelSize: 10
-
                     iconSource: icon
 
                     onClicked: {
@@ -225,37 +191,37 @@ Maui.ApplicationWindow
                         switch (index) {
                             case 0: {
                                 menuSideBar.currentIndex = index
-                                stackView.push("qrc:/org/kde/novalive/controls/Notifications.qml")
+                                stackView.push("qrc:/Notifications.qml")
                                 return
                             }
                             case 1: {
                                 menuSideBar.currentIndex = index
-                                stackView.push("qrc:/org/kde/novalive/controls/Favorites.qml")
+                                stackView.push("qrc:/Favorites.qml")
                                 return
                             }
                             case 2: {
                                 menuSideBar.currentIndex = index
-                                stackView.push("qrc:/org/kde/novalive/controls/SoulFunk.qml")
+                                stackView.push("qrc:/SoulFunk.qml")
                                 return
                             }
                             case 3: {
                                 menuSideBar.currentIndex = index
-                                stackView.push("qrc:/org/kde/novalive/controls/Search.qml")
+                                stackView.push("qrc:/Search.qml")
                                 return
                             }
                             case 4: {
                                 menuSideBar.currentIndex = index
-                                stackView.push("qrc:/org/kde/novalive/controls/Genres.qml")
+                                stackView.push("qrc:/Genres.qml")
                                 return
                             }
                             case 5: {
                                 menuSideBar.currentIndex = index
-                                stackView.push("qrc:/org/kde/novalive/controls/Country.qml")
+                                stackView.push("qrc:/Country.qml")
                                 return
                             }
                             case 6: {
                                 menuSideBar.currentIndex = index
-                                stackView.push("qrc:/org/kde/novalive/controls/Language.qml")
+                                stackView.push("qrc:/Language.qml")
                                 return
                             }
                         }
@@ -271,7 +237,7 @@ Maui.ApplicationWindow
             headBar.visible: false
 
             Component.onCompleted: {
-                stackView.push("qrc:/org/kde/novalive/controls/Home.qml")
+                stackView.push("qrc:/Home.qml")
             }
 
             StackView {

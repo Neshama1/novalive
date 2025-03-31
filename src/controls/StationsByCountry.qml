@@ -1,13 +1,13 @@
-import QtQuick
-import QtQuick.Controls
-import org.mauikit.controls as Maui
-import org.kde.novalive
-import QtMultimedia
+import QtQuick 2.15
+import QtQuick.Controls 2.15
+import org.mauikit.controls 1.3 as Maui
+import org.kde.novalive 1.0
+import QtMultimedia 5.15
 
 Maui.Page {
     id: stationsByCountryPage
 
-    Maui.Controls.showCSD: true
+    showCSDControls: true
 
     headBar.background: Rectangle {
         anchors.fill: parent
