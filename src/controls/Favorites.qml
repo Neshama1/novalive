@@ -137,7 +137,6 @@ Maui.Page {
                         icon.name: "remove"
                         onTriggered: {
                             favoritesModel.remove(rightStationIndex)
-                            saveFavorites()
                         }
                     }
                     MenuItem {
