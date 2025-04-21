@@ -1,12 +1,12 @@
-import QtQuick 2.15
-import QtQuick.Controls 2.15
-import org.mauikit.controls 1.3 as Maui
-import QtQuick.Layouts 1.15
+import QtQuick
+import QtQuick.Controls
+import org.mauikit.controls as Maui
+import QtQuick.Layouts
 
 Maui.Page {
     id: apiKeyYouTube1Page
 
-    showCSDControls: true
+    Maui.Controls.showCSD: true
 
     headBar.background: Rectangle {
         anchors.fill: parent
@@ -71,6 +71,6 @@ Maui.Page {
         width: 60
         height: width
         icon.name: "go-next"
-        onClicked: stackView.push("qrc:/APIKeyYouTube2.qml")
+        onClicked: stackView.push("qrc:/org/kde/novalive/controls/APIKeyYouTube2.qml")
     }
 }

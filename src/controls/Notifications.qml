@@ -1,13 +1,13 @@
-import QtQuick 2.15
-import QtQuick.Controls 2.15
-import org.mauikit.controls 1.3 as Maui
+import QtQuick
+import QtQuick.Controls
+import org.mauikit.controls as Maui
 
 Maui.Page {
     id: notificationsPage
 
     property int rightStationIndex
 
-    showCSDControls: true
+    Maui.Controls.showCSD: true
 
     headBar.background: Rectangle {
         anchors.fill: parent
@@ -135,7 +135,7 @@ Maui.Page {
                         onTriggered: {
                             list.currentIndex = index
                             notificationsCurrentIndex = index
-                            apiKeyYouTube == "" ? stackView.push("qrc:/APIKeyYouTube1.qml") : stackView.push("qrc:/YouTube.qml")
+                            apiKeyYouTube == "" ? stackView.push("qrc:/org/kde/novalive/controls/APIKeyYouTube1.qml") : stackView.push("qrc:/org/kde/novalive/controls/YouTube.qml")
                         }
                     }
                 ]

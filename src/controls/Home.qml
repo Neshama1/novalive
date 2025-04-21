@@ -1,12 +1,12 @@
-import QtQuick 2.15
-import QtQuick.Controls 2.15
-import org.mauikit.controls 1.3 as Maui
-import QtQuick.Layouts 1.15
+import QtQuick
+import QtQuick.Controls
+import org.mauikit.controls as Maui
+import QtQuick.Layouts
 
 Maui.Page {
     id: homePage
 
-    showCSDControls: true
+    Maui.Controls.showCSD: true
 
     headBar.background: Rectangle {
         anchors.fill: parent
@@ -26,22 +26,63 @@ Maui.Page {
     }
 
     ColumnLayout {
-        width: parent.width - 40
         anchors.centerIn: parent
+
+        //Layout.margins: 20
+
+        //anchors.left: parent.left
+        //anchors.right: parent.right
+        //anchors.margins: 20
+
+        //Layout.alignment: Qt.AlignVCenter
+        //width: parent.width - 40
+
+        width: parent.width
+        height: 70
+
+        //spacing: 10
+        //Layout.minimumHeight: 200
+        //Layout.maximumHeight: 300
+        //Layout.preferredHeight: 250
+        //Layout.fillHeight: true
+        //Layout.preferredHeight: parent.height
+        //Layout.minimumHeight: parent.height
+        //Layout.maximumHeight: parent.height
+        //anchors.centerIn: parent
+
         Label {
-            Layout.alignment: Qt.AlignCenter
-            anchors.left: parent.left
-            anchors.right: parent.right
+            //Layout.alignment: Qt.AlignVCenter
+            //anchors.left: parent.left
+            //anchors.right: parent.right
+
+            //Layout.alignment: Qt.AlignHCenter
+
+            Layout.leftMargin: 20
+            Layout.rightMargin: 20
+            Layout.minimumHeight: 0
+            Layout.maximumHeight: parent.height
+            Layout.preferredHeight: parent.height
+            Layout.minimumWidth: 0
+            Layout.maximumWidth: parent.width > 600 ? 600 - 40 : parent.width - 40
+            Layout.preferredWidth: parent.width
+
+            //width: parent.width
+            //height: parent.height
+
+            //Layout.fillHeight: true
+
             elide: Text.ElideRight
             wrapMode: Text.WordWrap
             font.pixelSize: 25
             text: "Nova Live is an internet radio player based on RadioBrowser"
         }
         RoundButton {
+            Layout.leftMargin: 20
+            Layout.rightMargin: 20
             text: "Open your favorites to get started"
             onClicked: {
                 menuSideBar.currentIndex = 1
-                stackView.push("qrc:/Favorites.qml")
+                stackView.push("qrc:/org/kde/novalive/controls/Favorites.qml")
             }
         }
     }

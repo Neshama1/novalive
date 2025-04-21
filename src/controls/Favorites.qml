@@ -1,13 +1,13 @@
-import QtQuick 2.15
-import QtQuick.Controls 2.15
-import org.mauikit.controls 1.3 as Maui
-import Qt.labs.settings 1.0
-import QtMultimedia 5.15
+import QtQuick
+import QtQuick.Controls
+import org.mauikit.controls as Maui
+import Qt.labs.settings
+import QtMultimedia
 
 Maui.Page {
     id: favoritesPage
 
-    showCSDControls: true
+    Maui.Controls.showCSD: true
 
     property int rightStationIndex
 
@@ -46,15 +46,6 @@ Maui.Page {
         xAnimation.start()
 
         playingInfo.text = playingInfoOnChangedPage
-
-        if (favoritesModel.count == 0) {
-            // Leer favoritos de ~/.config/KDE/novalive.conf
-            var datamodel = JSON.parse(favorites)
-            for (var i = 0; i < datamodel.length; ++i)
-            {
-                favoritesModel.append(datamodel[i])
-            }
-        }
     }
 
     PropertyAnimation {
