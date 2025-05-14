@@ -5,12 +5,12 @@
 #ifndef GENRESBACKEND_H
 #define GENRESBACKEND_H
 
-#include <QObject>
-#include <QDebug>
-#include <QDir>
-#include <QStringList>
 #include <KConfig>
 #include <KConfigGroup>
+#include <QDebug>
+#include <QDir>
+#include <QObject>
+#include <QStringList>
 
 /**
  * @todo write docs
@@ -42,10 +42,10 @@ public Q_SLOTS:
      *
      * @param genres the new genres
      */
-    void setGenres(const QStringList& genres);
+    void setGenres(const QStringList &genres);
 
 Q_SIGNALS:
-    void genresChanged(const QStringList& genres);
+    void genresChanged(const QStringList &genres);
 
 public:
     QStringList m_genres;

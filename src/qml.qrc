@@ -1,0 +1,21 @@
+<RCC>
+    <qresource prefix="/">
+        <file>controls/main.qml</file>
+        <file>controls/Home.qml</file>
+        <file>controls/Favorites.qml</file>
+        <file>controls/Notifications.qml</file>
+        <file>controls/SoulFunk.qml</file>
+        <file>controls/Search.qml</file>
+        <file>controls/Genres.qml</file>
+        <file>controls/Country.qml</file>
+        <file>controls/Language.qml</file>
+        <file>controls/StationsByGenre.qml</file>
+        <file>controls/StationsByCountry.qml</file>
+        <file>controls/StationsByLanguage.qml</file>
+        <file>controls/APIKeyYouTube1.qml</file>
+        <file>controls/APIKeyYouTube2.qml</file>
+        <file>controls/APIKeyYouTube3.qml</file>
+        <file>controls/YouTube.qml</file>
+        <file>controls/SettingsDialog.qml</file>
+    </qresource>
+</RCC>

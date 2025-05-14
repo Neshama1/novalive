@@ -34,7 +34,7 @@ endif()
 find_package(ECM ${REQUIRED_KF_VERSION} REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake" ${ECM_MODULE_PATH})
 
-find_package(Qt6 ${REQUIRED_QT_VERSION} REQUIRED NO_MODULE COMPONENTS Core Sql Qml Quick Multimedia Network)
+find_package(Qt6 ${REQUIRED_QT_VERSION} REQUIRED NO_MODULE COMPONENTS Core Gui Sql Qml Quick Multimedia Network)
 find_package(KF6 ${REQUIRED_KF_VERSION} REQUIRED COMPONENTS I18n Config CoreAddons)
 
 find_package(FFmpeg COMPONENTS REQUIRED AVCODEC AVFORMAT SWSCALE)
@@ -49,7 +49,9 @@ else()
     find_package(Qt6 ${REQUIRED_QT_VERSION} REQUIRED COMPONENTS Widgets DBus)
 endif()
 
+find_package(MauiKit4 REQUIRED)
 find_package(MauiKit4 REQUIRED COMPONENTS FileBrowsing)
+find_package(MauiMan4 REQUIRED)
 
 if(ANDROID)
     find_package(taglib REQUIRED)

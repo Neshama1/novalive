@@ -73,7 +73,7 @@ Maui.Page {
                 onClicked: {
                     countriesCurrentIndex = index
                     stationsByCountryModel.clear()
-                    stackView.push("qrc:/org/kde/novalive/controls/StationsByCountry.qml")
+                    stackView.push("StationsByCountry.qml")
                 }
             }
         }

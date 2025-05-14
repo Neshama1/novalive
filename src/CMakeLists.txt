@@ -9,7 +9,7 @@ set(NOVALIVE_SRCS
     code/qthelper.hpp)
 
 set(NOVALIVE_ASSETS
-    assets/assets.qrc)
+    assets.qrc)
 
 if(ANDROID)
     qt_add_executable(${PROJECT_NAME}
@@ -85,7 +85,9 @@ target_link_libraries(${PROJECT_NAME}
     PRIVATE
     MauiKit4
     MauiKit4::FileBrowsing
+    MauiMan4
     Qt6::Core
+    Qt6::Gui
     Qt6::Quick
     Qt6::Qml
     Qt6::Widgets

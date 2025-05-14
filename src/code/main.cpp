@@ -4,30 +4,32 @@
 #include <QApplication>
 #endif
 
-#include <QQmlApplicationEngine>
 #include <QCommandLineParser>
 #include <QDate>
 #include <QIcon>
+#include <QQmlApplicationEngine>
 #include <QQmlContext>
 
 #include <MauiKit4/Core/mauiapp.h>
 #include <MauiKit4/FileBrowsing/fmstatic.h>
 #include <MauiKit4/FileBrowsing/moduleinfo.h>
+#include <MauiMan4/settingsstore.h>
+#include <MauiMan4/thememanager.h>
 
 #include <KAboutData>
 #include <KLocalizedString>
 
 #include "../novalive_version.h"
 
-#include "genresbackend.h"
 #include "countrybackend.h"
+#include "genresbackend.h"
 #include "languagebackend.h"
 #include "mpvrenderer.h"
 
 #include <QDirIterator>
 #include <QFileInfo>
-#include <taglib/taglib.h>
 #include <libavutil/avutil.h>
+#include <taglib/taglib.h>
 
 #define NOVALIVE_URI "org.kde.novalive"
 
@@ -46,7 +48,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     std::setlocale(LC_NUMERIC, "C");
 
     app.setOrganizationName("KDE");
-    app.setWindowIcon(QIcon(":/logo.png"));
+    app.setWindowIcon(QIcon(":/assets/logo.svg"));
     QGuiApplication::setDesktopFileName(QStringLiteral("project"));
 
     KLocalizedString::setApplicationDomain("novalive");
@@ -68,7 +70,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     const auto FBData = MauiKitFileBrowsing::aboutData();
     about.addComponent(FBData.name(), MauiKitFileBrowsing::buildVersion(), FBData.version(), FBData.webAddress());
 
-//    about.addComponent("FFmpeg", "", QString::fromLatin1(av_version_info()), QString::fromLatin1(avutil_license()));
+    //    about.addComponent("FFmpeg", "", QString::fromLatin1(av_version_info()), QString::fromLatin1(avutil_license()));
 
     qputenv("QML_DISABLE_DISK_CACHE", "1");
 
@@ -76,10 +78,11 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     about.addComponent("MPV");
 #endif
 
-    about.addComponent("TagLib",
-                       "",
-                       QString("%1.%2.%3").arg(QString::number(TAGLIB_MAJOR_VERSION),QString::number(TAGLIB_MINOR_VERSION),QString::number(TAGLIB_PATCH_VERSION)),
-                       "https://taglib.org/api/index.html");
+    about.addComponent(
+        "TagLib",
+        "",
+        QString("%1.%2.%3").arg(QString::number(TAGLIB_MAJOR_VERSION), QString::number(TAGLIB_MINOR_VERSION), QString::number(TAGLIB_PATCH_VERSION)),
+        "https://taglib.org/api/index.html");
 
     KAboutData::setApplicationData(about);
     MauiApp::instance()->setIconName("qrc:/assets/logo.svg");
@@ -96,34 +99,37 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     QPair<QString, QList<QUrl>> arguments;
     arguments.first = "collection";
 
-    if(!args.isEmpty())
-    {
+    if (!args.isEmpty()) {
         arguments.first = "viewer";
     }
 
     QQmlApplicationEngine engine;
     const QUrl url(QStringLiteral("qrc:/org/kde/novalive/controls/main.qml"));
-    QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
-                     &app, [url, &arguments](QObject *obj, const QUrl &objUrl)
-    {
-        if (!obj && url == objUrl)
-            QCoreApplication::exit(-1);
-
-    }, Qt::QueuedConnection);
+    QObject::connect(
+        &engine,
+        &QQmlApplicationEngine::objectCreated,
+        &app,
+        [url, &arguments](QObject *obj, const QUrl &objUrl) {
+            if (!obj && url == objUrl)
+                QCoreApplication::exit(-1);
+        },
+        Qt::QueuedConnection);
 
     GenresBackend genresbackend;
     qmlRegisterSingletonInstance<GenresBackend>("org.kde.novalive", 1, 0, "GenresBackend", &genresbackend);
-    engine.rootContext()->setContextProperty("genresModel",QVariant::fromValue(genresbackend.m_genres));
+    engine.rootContext()->setContextProperty("genresModel", QVariant::fromValue(genresbackend.m_genres));
 
     CountryBackend countrybackend;
     qmlRegisterSingletonInstance<CountryBackend>("org.kde.novalive", 1, 0, "CountryBackend", &countrybackend);
-    engine.rootContext()->setContextProperty("countryNameModel",QVariant::fromValue(countrybackend.m_name));
+    engine.rootContext()->setContextProperty("countryNameModel", QVariant::fromValue(countrybackend.m_name));
 
     LanguageBackend languagebackend;
     qmlRegisterSingletonInstance<LanguageBackend>("org.kde.novalive", 1, 0, "LanguageBackend", &languagebackend);
-    engine.rootContext()->setContextProperty("languageModel",QVariant::fromValue(languagebackend.m_language));
+    engine.rootContext()->setContextProperty("languageModel", QVariant::fromValue(languagebackend.m_language));
 
     qmlRegisterType<MpvObject>("org.kde.novalive", 1, 0, "MpvObject");
+    qmlRegisterType<MauiMan::ThemeManager>("org.kde.novalive", 1, 0, "ThemeManager");
+    qmlRegisterType<MauiMan::SettingsStore>("org.kde.novalive", 1, 0, "SettingsStore");
 
     engine.rootContext()->setContextObject(new KLocalizedContext(&engine));
 

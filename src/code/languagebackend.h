@@ -5,12 +5,12 @@
 #ifndef LANGUAGEBACKEND_H
 #define LANGUAGEBACKEND_H
 
-#include <QObject>
-#include <QDebug>
-#include <QDir>
-#include <QStringList>
 #include <KConfig>
 #include <KConfigGroup>
+#include <QDebug>
+#include <QDir>
+#include <QObject>
+#include <QStringList>
 
 /**
  * @todo write docs
@@ -42,10 +42,10 @@ public Q_SLOTS:
      *
      * @param language the new language
      */
-    void setLanguage(const QStringList& language);
+    void setLanguage(const QStringList &language);
 
 Q_SIGNALS:
-    void languageChanged(const QStringList& language);
+    void languageChanged(const QStringList &language);
 
 public:
     QStringList m_language;

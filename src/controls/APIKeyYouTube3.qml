@@ -33,7 +33,7 @@ Maui.Page {
     {
         anchors.fill: parent
         anchors.margins: 0
-        imageSource: "qrc:/stars-pixabay-clouds-7689100_1280.png"
+        imageSource: "qrc:/assets/stars-pixabay-clouds-7689100_1280.png"
         imageSizeHint: parent.height
         maskRadius: Maui.Style.radiusV
         fillMode: Image.PreserveAspectCrop
@@ -71,7 +71,7 @@ Maui.Page {
             radius: 4
             color: Maui.ColorUtils.brightnessForColor(Maui.Theme.backgroundColor) == Maui.ColorUtils.Light ? "white" : "dimgrey"
         }
-        onClicked: stackView.push("qrc:/org/kde/novalive/controls/APIKeyYouTube2.qml")
+        onClicked: stackView.push("APIKeyYouTube2.qml")
     }
 
     Maui.FloatingButton
@@ -85,7 +85,7 @@ Maui.Page {
         icon.name: "go-next"
         onClicked: {
             apiKeyYouTube = textField.text
-            stackView.push("qrc:/org/kde/novalive/controls/YouTube.qml")
+            stackView.push("YouTube.qml")
         }
     }
 }

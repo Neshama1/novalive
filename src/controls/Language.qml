@@ -73,7 +73,7 @@ Maui.Page {
                 onClicked: {
                     languagesCurrentIndex = index
                     stationsByLanguageModel.clear()
-                    stackView.push("qrc:/org/kde/novalive/controls/StationsByLanguage.qml")
+                    stackView.push("StationsByLanguage.qml")
                 }
             }
         }

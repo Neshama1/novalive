@@ -66,6 +66,6 @@ Maui.Page {
         width: 60
         height: width
         icon.name: "go-next"
-        onClicked: stackView.push("qrc:/org/kde/novalive/controls/APIKeyYouTube3.qml")
+        onClicked: stackView.push("APIKeyYouTube3.qml")
     }
 }

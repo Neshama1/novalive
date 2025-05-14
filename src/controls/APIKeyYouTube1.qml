@@ -33,7 +33,7 @@ Maui.Page {
     {
         anchors.fill: parent
         anchors.margins: 0
-        imageSource: "qrc:/stars-pixabay-clouds-7689100_1280.png"
+        imageSource: "qrc:/assets/stars-pixabay-clouds-7689100_1280.png"
         imageSizeHint: parent.height
         maskRadius: Maui.Style.radiusV
         fillMode: Image.PreserveAspectCrop
@@ -47,7 +47,7 @@ Maui.Page {
             Layout.alignment: Qt.AlignCenter
             anchors.left: parent.left
             anchors.right: parent.right
-            imageSource: "qrc:/pixabay-cassette-4103530_1280.png"
+            imageSource: "qrc:/assets/pixabay-cassette-4103530_1280.png"
             imageSizeHint: 270
             maskRadius: Maui.Style.radiusV
             fillMode: Image.PreserveAspectCrop
@@ -71,6 +71,6 @@ Maui.Page {
         width: 60
         height: width
         icon.name: "go-next"
-        onClicked: stackView.push("qrc:/org/kde/novalive/controls/APIKeyYouTube2.qml")
+        onClicked: stackView.push("APIKeyYouTube2.qml")
     }
 }

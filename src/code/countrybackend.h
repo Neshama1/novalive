@@ -5,12 +5,12 @@
 #ifndef COUNTRYBACKEND_H
 #define COUNTRYBACKEND_H
 
-#include <QObject>
-#include <QDebug>
-#include <QDir>
-#include <QStringList>
 #include <KConfig>
 #include <KConfigGroup>
+#include <QDebug>
+#include <QDir>
+#include <QObject>
+#include <QStringList>
 
 /**
  * @todo write docs
@@ -48,19 +48,19 @@ public Q_SLOTS:
      *
      * @param name the new name
      */
-    void setName(const QStringList& name);
+    void setName(const QStringList &name);
 
     /**
      * Sets the code.
      *
      * @param code the new code
      */
-    void setCode(const QStringList& code);
+    void setCode(const QStringList &code);
 
 Q_SIGNALS:
-    void nameChanged(const QStringList& name);
+    void nameChanged(const QStringList &name);
 
-    void codeChanged(const QStringList& code);
+    void codeChanged(const QStringList &code);
 
 public:
     QStringList m_name;

@@ -74,7 +74,7 @@ Maui.Page {
                 onClicked: {
                     genresCurrentIndex = index
                     stationsByGenreModel.clear()
-                    stackView.push("qrc:/org/kde/novalive/controls/StationsByGenre.qml")
+                    stackView.push("StationsByGenre.qml")
                 }
             }
         }

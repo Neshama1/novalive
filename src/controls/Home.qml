@@ -19,7 +19,7 @@ Maui.Page {
     {
         anchors.fill: parent
         anchors.margins: 0
-        imageSource: "qrc:/stars-pixabay-clouds-7689100_1280.png"
+        imageSource: "qrc:/assets/stars-pixabay-clouds-7689100_1280.png"
         imageSizeHint: parent.height
         maskRadius: Maui.Style.radiusV
         fillMode: Image.PreserveAspectCrop
@@ -82,7 +82,7 @@ Maui.Page {
             text: "Open your favorites to get started"
             onClicked: {
                 menuSideBar.currentIndex = 1
-                stackView.push("qrc:/org/kde/novalive/controls/Favorites.qml")
+                stackView.push("Favorites.qml")
             }
         }
     }
@@ -96,7 +96,7 @@ Maui.Page {
         width: 60
         height: width
         icon.name: "go-next"
-        onClicked: stackView.push("qrc:/APIKeyYouTube3.qml")
+        onClicked: stackView.push("APIKeyYouTube3.qml")
     }
     */
 }

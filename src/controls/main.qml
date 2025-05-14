@@ -30,9 +30,11 @@ Maui.ApplicationWindow
     property string currentTitle
     property string playingInfoOnChangedPage
     property string favorites: ""
+    property int styleType: Maui.Style.Auto
 
     Settings {
         property alias favorites: root.favorites
+        property alias styleType: root.styleType
     }
 
     signal titleChanged()
@@ -57,8 +59,21 @@ Maui.ApplicationWindow
         visible: false
     }
 
+    ThemeManager {
+        id: themeManager
+    }
+
     Component.onCompleted: {
+
+        // Theme
+        Maui.Style.styleType = styleType === Maui.Style.Auto ? themeManager.styleType : styleType
+        Maui.Style.accentColor = "aquamarine"
+        Maui.Style.windowControlsTheme = themeManager.windowControlsTheme
+
+        // Favorites
         getFavorites()
+
+        // RadioBrowser server
         getRadioBrowserServer()
     }
 
@@ -237,37 +252,37 @@ Maui.ApplicationWindow
                         switch (index) {
                             case 0: {
                                 menuSideBar.currentIndex = index
-                                stackView.push("qrc:/org/kde/novalive/controls/Notifications.qml")
+                                stackView.push("Notifications.qml")
                                 return
                             }
                             case 1: {
                                 menuSideBar.currentIndex = index
-                                stackView.push("qrc:/org/kde/novalive/controls/Favorites.qml")
+                                stackView.push("Favorites.qml")
                                 return
                             }
                             case 2: {
                                 menuSideBar.currentIndex = index
-                                stackView.push("qrc:/org/kde/novalive/controls/SoulFunk.qml")
+                                stackView.push("SoulFunk.qml")
                                 return
                             }
                             case 3: {
                                 menuSideBar.currentIndex = index
-                                stackView.push("qrc:/org/kde/novalive/controls/Search.qml")
+                                stackView.push("Search.qml")
                                 return
                             }
                             case 4: {
                                 menuSideBar.currentIndex = index
-                                stackView.push("qrc:/org/kde/novalive/controls/Genres.qml")
+                                stackView.push("Genres.qml")
                                 return
                             }
                             case 5: {
                                 menuSideBar.currentIndex = index
-                                stackView.push("qrc:/org/kde/novalive/controls/Country.qml")
+                                stackView.push("Country.qml")
                                 return
                             }
                             case 6: {
                                 menuSideBar.currentIndex = index
-                                stackView.push("qrc:/org/kde/novalive/controls/Language.qml")
+                                stackView.push("Language.qml")
                                 return
                             }
                         }
@@ -283,7 +298,7 @@ Maui.ApplicationWindow
             headBar.visible: false
 
             Component.onCompleted: {
-                stackView.push("qrc:/org/kde/novalive/controls/Home.qml")
+                stackView.push("Home.qml")
             }
 
             StackView {

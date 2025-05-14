@@ -1,18 +1,18 @@
 #include "mpvrenderer.h"
 
-#include <stdexcept>
 #include <clocale>
+#include <stdexcept>
 
-#include <QObject>
-#include <QtGlobal>
-#include <QOpenGLContext>
 #include <QGuiApplication>
+#include <QObject>
+#include <QOpenGLContext>
+#include <QtGlobal>
 
 #include <QOpenGLFramebufferObject>
 #include <QQuickFramebufferObject>
 
-#include <QtQuick/QQuickWindow>
 #include <QtQuick/QQuickView>
+#include <QtQuick/QQuickWindow>
 
 #include <QDebug>
 
@@ -33,7 +33,8 @@ static void *get_proc_address_mpv(void *ctx, const char *name)
     Q_UNUSED(ctx)
 
     QOpenGLContext *glctx = QOpenGLContext::currentContext();
-    if (!glctx) return nullptr;
+    if (!glctx)
+        return nullptr;
 
     return reinterpret_cast<void *>(glctx->getProcAddress(QByteArray(name)));
 }
@@ -51,21 +52,19 @@ public:
     }
 
     virtual ~MpvRenderer()
-    {}
+    {
+    }
 
     // This function is called when a new FBO is needed.
     // This happens on the initial frame.
-    QOpenGLFramebufferObject * createFramebufferObject(const QSize &size)
+    QOpenGLFramebufferObject *createFramebufferObject(const QSize &size)
     {
         // init mpv_gl:
-        if (!obj->mpv_gl)
-        {
+        if (!obj->mpv_gl) {
             mpv_opengl_init_params gl_init_params[1] = {get_proc_address_mpv, nullptr};
-            mpv_render_param params[]{
-                {MPV_RENDER_PARAM_API_TYPE, const_cast<char *>(MPV_RENDER_API_TYPE_OPENGL)},
-                {MPV_RENDER_PARAM_OPENGL_INIT_PARAMS, &gl_init_params},
-                {MPV_RENDER_PARAM_INVALID, nullptr}
-            };
+            mpv_render_param params[]{{MPV_RENDER_PARAM_API_TYPE, const_cast<char *>(MPV_RENDER_API_TYPE_OPENGL)},
+                                      {MPV_RENDER_PARAM_OPENGL_INIT_PARAMS, &gl_init_params},
+                                      {MPV_RENDER_PARAM_INVALID, nullptr}};
 
             if (mpv_render_context_create(&obj->mpv_gl, obj->mpv, params) < 0)
                 throw std::runtime_error("failed to initialize mpv GL context");
@@ -81,16 +80,14 @@ public:
         mpv_opengl_fbo mpfbo{.fbo = static_cast<int>(fbo->handle()), .w = fbo->width(), .h = fbo->height(), .internal_format = 0};
         int flip_y{0};
 
-        mpv_render_param params[] = {
-            // Specify the default framebuffer (0) as target. This will
-            // render onto the entire screen. If you want to show the video
-            // in a smaller rectangle or apply fancy transformations, you'll
-            // need to render into a separate FBO and draw it manually.
-            {MPV_RENDER_PARAM_OPENGL_FBO, &mpfbo},
-            // Flip rendering (needed due to flipped GL coordinate system).
-            {MPV_RENDER_PARAM_FLIP_Y, &flip_y},
-            {MPV_RENDER_PARAM_INVALID, nullptr}
-        };
+        mpv_render_param params[] = {// Specify the default framebuffer (0) as target. This will
+                                     // render onto the entire screen. If you want to show the video
+                                     // in a smaller rectangle or apply fancy transformations, you'll
+                                     // need to render into a separate FBO and draw it manually.
+                                     {MPV_RENDER_PARAM_OPENGL_FBO, &mpfbo},
+                                     // Flip rendering (needed due to flipped GL coordinate system).
+                                     {MPV_RENDER_PARAM_FLIP_Y, &flip_y},
+                                     {MPV_RENDER_PARAM_INVALID, nullptr}};
         // See render_gl.h on what OpenGL environment mpv expects, and
         // other API details.
         mpv_render_context_render(obj->mpv_gl, params);
@@ -108,8 +105,10 @@ static void wakeup(void *ctx)
     Q_EMIT mpvobject->mpv_events();
 }
 
-MpvObject::MpvObject(QQuickItem * parent)
-    : QQuickFramebufferObject(parent), mpv{mpv_create()}, mpv_gl(nullptr)
+MpvObject::MpvObject(QQuickItem *parent)
+    : QQuickFramebufferObject(parent)
+    , mpv{mpv_create()}
+    , mpv_gl(nullptr)
 {
     if (!mpv)
         throw std::runtime_error("could not create mpv context");
@@ -124,7 +123,7 @@ MpvObject::MpvObject(QQuickItem * parent)
     // Request hw decoding, just for testing.
     mpv::qt::set_option_variant(mpv, "hwdec", "auto");
 
-    connect(this, &MpvObject::onUpdate, this, &MpvObject::doUpdate,Qt::QueuedConnection);
+    connect(this, &MpvObject::onUpdate, this, &MpvObject::doUpdate, Qt::QueuedConnection);
 
     mpv_observe_property(mpv, 0, "pause", MPV_FORMAT_FLAG);
     mpv_observe_property(mpv, 0, "duration", MPV_FORMAT_DOUBLE);
@@ -133,7 +132,7 @@ MpvObject::MpvObject(QQuickItem * parent)
 
     mpv_observe_property(mpv, 0, "force-window", MPV_FORMAT_FLAG);
 
-    connect(this, &MpvObject::mpv_events, this, &MpvObject::on_mpv_events,Qt::QueuedConnection);
+    connect(this, &MpvObject::mpv_events, this, &MpvObject::on_mpv_events, Qt::QueuedConnection);
     mpv_set_wakeup_callback(mpv, wakeup, this);
 }
 
@@ -159,12 +158,12 @@ void MpvObject::doUpdate()
     update();
 }
 
-void MpvObject::command(const QVariant& params)
+void MpvObject::command(const QVariant &params)
 {
     mpv::qt::command_variant(mpv, params);
 }
 
-void MpvObject::setProperty(const QString& name, const QVariant& value)
+void MpvObject::setProperty(const QString &name, const QVariant &value)
 {
     mpv::qt::set_property_variant(mpv, name, value);
 }
@@ -195,54 +194,46 @@ void MpvObject::handle_mpv_event(mpv_event *event)
         // PAUSE
         if (strcmp(prop->name, "pause") == 0) {
             if (prop->format == MPV_FORMAT_FLAG) {
-
                 bool state = *(bool *)prop->data;
-                propertyChanged("pause",state);
+                propertyChanged("pause", state);
                 qDebug() << "Pausa: " << state;
             }
         }
 
         if (strcmp(prop->name, "duration") == 0) {
             if (prop->format == MPV_FORMAT_DOUBLE) {
-
                 double duration = *(double *)prop->data;
-                propertyChanged("duration",duration);
+                propertyChanged("duration", duration);
                 qDebug() << "Duración: " << duration;
             }
         }
 
         if (strcmp(prop->name, "time-pos") == 0) {
             if (prop->format == MPV_FORMAT_DOUBLE) {
-
                 double timePos = *(double *)prop->data;
-                propertyChanged("time-pos",timePos);
+                propertyChanged("time-pos", timePos);
                 qDebug() << "Tiempo: " << timePos;
             }
         }
 
         if (strcmp(prop->name, "idle-active") == 0) {
             if (prop->format == MPV_FORMAT_FLAG) {
-
                 bool idleActive = *(bool *)prop->data;
-                propertyChanged("idle-active",idleActive);
+                propertyChanged("idle-active", idleActive);
                 qDebug() << "Inactivo: " << idleActive;
             }
         }
 
-
-
         if (strcmp(prop->name, "force-window") == 0) {
             if (prop->format == MPV_FORMAT_FLAG) {
-
                 bool windowMode = *(bool *)prop->data;
-                propertyChanged("force-window",windowMode);
+                propertyChanged("force-window", windowMode);
                 qDebug() << "Forzar ventana: " << windowMode;
             }
         }
         break;
-
     }
-    default: ;
+    default:;
         // Ignore uninteresting or unknown events.
     }
 }

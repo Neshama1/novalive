@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>assets/logo.svg</file>
+        <file>assets/logo.png</file>
+        <file>assets/pixabay-cassette-4103530_1280.png</file>
+        <file>assets/stars-pixabay-clouds-7689100_1280.png</file>
+    </qresource>
+</RCC>
