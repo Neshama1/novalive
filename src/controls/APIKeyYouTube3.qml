@@ -8,6 +8,8 @@ Maui.Page {
 
     Maui.Controls.showCSD: true
 
+    headBar.visible: false
+
     headBar.background: Rectangle {
         anchors.fill: parent
         Maui.Theme.inherit: false
@@ -37,54 +39,61 @@ Maui.Page {
         imageSizeHint: parent.height
         maskRadius: Maui.Style.radiusV
         fillMode: Image.PreserveAspectCrop
+        scale: 1.5
     }
 
-    ColumnLayout {
+    Maui.ShadowedRectangle {
         anchors.centerIn: parent
-        width: parent.width - 180
-        Label {
-            Layout.alignment: Qt.AlignCenter
-            elide: Text.ElideRight
-            wrapMode: Text.WordWrap
-            font.pixelSize: 25
-            text: "Paste the key generated"
-        }
-        TextField {
-            id: textField
-            Layout.alignment: Qt.AlignCenter
-            onAccepted: apiKeyYouTube = text
+
+        width: 400
+        height: 400
+        radius: 0
+        color: Qt.lighter(Maui.Theme.alternateBackgroundColor, 1.03)
+        border.width: 0
+        shadow.size: 10
+        shadow.color: Maui.ColorUtils.brightnessForColor(Maui.Theme.backgroundColor) == Maui.ColorUtils.Light ? "#dadada" : "#2c2c2c"
+        shadow.xOffset: 0
+        shadow.yOffset: 0
+
+        ColumnLayout {
+            anchors.centerIn: parent
+            width: 250
+            Label {
+                Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+                Layout.margins: 10
+                Layout.preferredWidth: parent.width
+                Layout.maximumWidth: parent.width - 50
+                horizontalAlignment: Qt.AlignHCenter
+                elide: Text.ElideRight
+                wrapMode: Text.WordWrap
+                font.pixelSize: 25
+                text: "Paste the API Key generated"
+            }
+            TextField {
+                id: textField
+                Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+                Layout.margins: 10
+                Layout.minimumHeight: 40
+                height: 40
+                onAccepted: apiKeyYouTube = text
+                background: Maui.ProgressIndicator {
+                    anchors.fill: parent
+                }
+            }
         }
     }
 
-    Maui.FloatingButton
-    {
-        id: backButton
-        anchors.verticalCenter: parent.verticalCenter
-        anchors.left: parent.left
-        anchors.margins: 20
-        width: 60
-        height: width
-        icon.name: "go-previous"
-        icon.color: Maui.ColorUtils.brightnessForColor(Maui.Theme.backgroundColor) == Maui.ColorUtils.Light ? "black" : "white"
-        background: Rectangle {
-            anchors.fill: parent
-            radius: 4
-            color: Maui.ColorUtils.brightnessForColor(Maui.Theme.backgroundColor) == Maui.ColorUtils.Light ? "white" : "dimgrey"
-        }
-        onClicked: stackView.push("APIKeyYouTube2.qml")
-    }
-
-    Maui.FloatingButton
-    {
-        id: nextButton
+    Button {
         anchors.verticalCenter: parent.verticalCenter
         anchors.right: parent.right
         anchors.margins: 20
-        width: 60
-        height: width
+        icon.width: 32
+        icon.height: 32
         icon.name: "go-next"
+        flat: true
         onClicked: {
             apiKeyYouTube = textField.text
+            sideBarWidth = 215
             stackView.push("YouTube.qml")
         }
     }

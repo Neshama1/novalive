@@ -217,11 +217,13 @@ Maui.Page {
                     Action
                     {
                         icon.name: "media-playback-start"
-                        text: "Play"
+                        // text: "Play"
                         onTriggered: {
                             list.currentIndex = index
                             notificationsCurrentIndex = index
-                            apiKeyYouTube == "" ? stackView.push("qrc:/controls/APIKeyYouTube1.qml") : stackView.push("qrc:/controls/YouTube.qml")
+                            apiKeyYouTube == "" ? (
+                                sideBarWidth = 0,
+                                stackView.push("APIKeyYouTube1.qml")) : stackView.push("YouTube.qml")
                         }
                     }
                 ]

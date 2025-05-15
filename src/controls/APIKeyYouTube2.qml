@@ -8,6 +8,8 @@ Maui.Page {
 
     Maui.Controls.showCSD: true
 
+    headBar.visible: false
+
     headBar.background: Rectangle {
         anchors.fill: parent
         Maui.Theme.inherit: false
@@ -33,39 +35,42 @@ Maui.Page {
     {
         anchors.fill: parent
         anchors.margins: 0
-        imageSource: "qrc:/stars-pixabay-clouds-7689100_1280.png"
+        imageSource: "qrc:/assets/stars-pixabay-clouds-7689100_1280.png"
         imageSizeHint: parent.height
         maskRadius: Maui.Style.radiusV
         fillMode: Image.PreserveAspectCrop
+        scale: 1.5
     }
 
     ColumnLayout {
         anchors.centerIn: parent
         width: parent.width - 40
         Label {
-            Layout.alignment: Qt.AlignCenter
-            anchors.left: parent.left
-            anchors.right: parent.right
-            anchors.rightMargin: 80
+            Layout.alignment: Qt.AlignHCenter
+            Layout.bottomMargin: 20
+            Layout.preferredWidth: parent.width
+            Layout.maximumWidth: parent.width - 200
+            horizontalAlignment: Qt.AlignHCenter
             elide: Text.ElideRight
             wrapMode: Text.WordWrap
             font.pixelSize: 25
             text: "Provide your own API key, follow the steps indicated and copy the key generated"
         }
         RoundButton {
+            Layout.alignment: Qt.AlignHCenter
             text: "Open link in your default browser"
-            onClicked: Qt.openUrlExternally("https://github.com/headsetapp/headset-electron/wiki/Get-Youtube-API-Key")
+            onClicked: Qt.openUrlExternally("https://docs.themeum.com/tutor-lms/tutorials/get-youtube-api-key")
         }
     }
 
-    Maui.FloatingButton
-    {
+    Button {
         anchors.verticalCenter: parent.verticalCenter
         anchors.right: parent.right
         anchors.margins: 20
-        width: 60
-        height: width
+        icon.width: 32
+        icon.height: 32
         icon.name: "go-next"
+        flat: true
         onClicked: stackView.push("APIKeyYouTube3.qml")
     }
 }

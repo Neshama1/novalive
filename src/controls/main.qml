@@ -26,6 +26,7 @@ Maui.ApplicationWindow
     property int countriesCurrentIndex
     property int languagesCurrentIndex
     property int notificationsCurrentIndex
+    property int sideBarWidth: 215
     property string currentStation
     property string currentTitle
     property string playingInfoOnChangedPage
@@ -159,13 +160,22 @@ Maui.ApplicationWindow
         audioOutput: AudioOutput {}
 
         onMetaDataChanged: {
-            if (currentTitle != player.metaData.title)
-            {
-                readMetaData()
-                var timeString = new Date().toLocaleTimeString(Qt.locale("es_ES"))
 
-                //currentTitle = metaData.Title
-                //currentTitle = metaData.metaDataKeyToString("")
+            if (currentTitle != player.metaData.stringValue(MediaMetaData.Title)) {
+
+                // Clear metadata model
+
+                metaDataModel.clear()
+
+                // Read avaliable metadata
+
+                if (player.metaData) {
+                    for (var key of player.metaData.keys()) {
+                        metaDataModel.append({"key": key,"stringKey": player.metaData.metaDataKeyToString(key), "value": player.metaData.value(key), "stringValue": player.metaData.stringValue(key)})
+                    }
+                }
+
+                // Print to console
 
                 for (var i = 0; i < metaDataModel.count; i++) {
                     var mdKey = metaDataModel.get(i).mdKey
@@ -175,33 +185,41 @@ Maui.ApplicationWindow
                     console.info(mdKey, mdKeyString, mdValue, mdValueString)
                 }
 
+                // Get time
+
+                var timeString = new Date().toLocaleTimeString(Qt.locale("es_ES"))
+
+                // Add to notifications playlist
+
                 const artistsong = currentTitle.split(" - ");
+
                 notificationsModel.insert(0, {"title": currentTitle, "station": currentStation ,"artist": artistsong[0], "song": artistsong[1], "time": timeString})
+
+                // Info
+
                 playingInfoOnChangedPage = currentStation + " playing " + currentTitle
+
+                // Emit signal
+
                 root.titleChanged()
             }
         }
-
-        function readMetaData()
-        {
-            metaDataModel.clear()
-            for (var key = 0; key < 29; key++) {
-                metaDataModel.append({"mdKey": key,"mdKeyString": player.metaData.metaDataKeyToString(key), "mdValue": player.metaData.value(key), "mdValueString": player.metaData.stringValue(key)})
-            }
-
-            /*
-            if (player.metaData) {
-                for (var key of player.metaData.keys()) {
-                    metaDataModel.append({"key": key,"stringKey": player.metaData.metaDataKeyToString(key), "value": player.metaData.value(key), "stringValue": player.metaData.stringValue(key)})
-                }
-            }
-            */
-        }
     }
+
+    // MAIN PAGE
 
     Maui.SideBarView
     {
         anchors.fill: parent
+
+        sideBar.preferredWidth: sideBarWidth
+
+        Behavior on sideBar.preferredWidth {
+            NumberAnimation {
+                duration: 250
+                easing.type: Easing.OutExpot
+            }
+        }
 
         sideBarContent: Maui.Page
         {
