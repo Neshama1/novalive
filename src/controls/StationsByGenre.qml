@@ -18,7 +18,7 @@ Maui.Page {
 
     headBar.rightContent: Maui.ToolButtonMenu
     {
-        icon.name: "application-menu"
+        icon.name: "overflow-menu"
         MenuItem
         {
             text: i18n("Settings")
@@ -36,6 +36,92 @@ Maui.Page {
             text: "Add a radio station"
             icon.name: "radio"
             onTriggered: Qt.openUrlExternally("https://www.radio-browser.info/add")
+        }
+
+        MenuSeparator {}
+
+        MenuItem
+        {
+            text: i18n("Light")
+            checkable: true
+            autoExclusive: true
+            onTriggered: {
+                Maui.Style.styleType = Maui.Style.Light
+                styleType = Maui.Style.styleType
+            }
+            checked: Maui.Style.styleType === Maui.Style.Light
+        }
+
+        MenuItem
+        {
+            text: i18n("Dark")
+            checkable: true
+            autoExclusive: true
+            onTriggered: {
+                Maui.Style.styleType = Maui.Style.Dark
+                styleType = Maui.Style.styleType
+            }
+            checked: Maui.Style.styleType === Maui.Style.Dark
+        }
+
+        MenuItem
+        {
+            text: i18n("Adaptive")
+            checkable: true
+            autoExclusive: true
+            onTriggered: {
+                Maui.Style.styleType = Maui.Style.Adaptive
+                styleType = Maui.Style.styleType
+            }
+            checked: Maui.Style.styleType === Maui.Style.Adaptive
+        }
+
+        MenuItem
+        {
+            text: i18n("Custom")
+            checkable: true
+            autoExclusive: true
+            onTriggered: {
+                Maui.Style.styleType = Maui.Style.Auto
+                styleType = Maui.Style.styleType
+            }
+            checked: Maui.Style.styleType === Maui.Style.Auto
+        }
+
+        MenuItem
+        {
+            text: i18n("White")
+            checkable: true
+            autoExclusive: true
+            onTriggered: {
+                Maui.Style.styleType = Maui.Style.Inverted
+                styleType = Maui.Style.styleType
+            }
+            checked: Maui.Style.styleType === Maui.Style.Inverted
+        }
+
+        MenuItem
+        {
+            text: i18n("Black")
+            checkable: true
+            autoExclusive: true
+            onTriggered: {
+                Maui.Style.styleType = Maui.Style.TrueBlack
+                styleType = Maui.Style.styleType
+            }
+            checked: Maui.Style.styleType === Maui.Style.TrueBlack
+        }
+
+        MenuItem
+        {
+            text: i18n("System")
+            checkable: true
+            autoExclusive: true
+            onTriggered: {
+                Maui.Style.styleType = undefined
+                styleType = Maui.Style.styleType
+            }
+            checked: Maui.Style.styleType === undefined
         }
     }
 
