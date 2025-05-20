@@ -1,6 +1,6 @@
 <RCC>
     <qresource prefix="/">
-        <file>controls/main.qml</file>
+        <file>main.qml</file>
         <file>controls/Home.qml</file>
         <file>controls/Favorites.qml</file>
         <file>controls/Notifications.qml</file>

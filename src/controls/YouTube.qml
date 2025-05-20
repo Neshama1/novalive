@@ -1,7 +1,6 @@
 import QtQuick
 import QtQuick.Controls
 import org.mauikit.controls as Maui
-import QtMultimedia
 
 Maui.Page {
     id: youTubePage
@@ -128,20 +127,20 @@ Maui.Page {
     headBar.leftContent: ToolButton {
         icon.name: "draw-arrow-back"
         onClicked: {
-            mpvPlayer.setProperty("pause",true)
-            stackView.push("qrc:/Notifications.qml")
+            player.pause = true
+            stackView.push("Notifications.qml")
         }
     }
 
     Component.onCompleted: {
         xAnimation.start()
-        player.stop()
+        player.pause = true
         youTubeModel.clear()
         search(notificationsModel.get(notificationsCurrentIndex).title)
     }
 
     Component.onDestruction: {
-        mpvPlayer.setProperty("pause",true)
+        player.pause = true
     }
 
     PropertyAnimation {
@@ -187,20 +186,27 @@ Maui.Page {
         delegate: Rectangle {
             color: "transparent"
             width: ListView.view.width
-            height: 80
+            height: 50
             Maui.SwipeBrowserDelegate
             {
                 anchors.fill: parent
                 label1.text: title
                 label2.text: description
-                iconSource: thumbnailUrl
+                //iconSource: thumbnailUrl
                 iconSizeHint: Maui.Style.iconSizes.medium
 
                 onClicked: {
                     list.currentIndex = index
-                    mpvPlayer.command(["loadfile", "https://www.youtube.com/watch?v=" + videoId])
-                    mpvPlayer.setProperty("pause",false)
-                    mpvPlayer.setProperty("time-pos", 0)
+
+                    var ytVideoUrl = "https://www.youtube.com/watch?v=" + videoId
+
+                    console.info("url", ytVideoUrl)
+
+                    player.pause = true
+                    player.loadFile(ytVideoUrl)
+                    player.pause = false
+                    stationLoaded = false
+                    player.position = 0
                     playButton.icon.name = "media-playback-stop"
                 }
             }
@@ -217,13 +223,13 @@ Maui.Page {
         height: width
         icon.name: "media-playback-start"
         onClicked: {
-            if (mpvPlayer.getProperty("pause") == true) {
+            if (player.pause) {
                 playButton.icon.name = "media-playback-stop"
-                mpvPlayer.setProperty("pause",false)
+                player.pause = false
             }
             else {
                 playButton.icon.name = "media-playback-start"
-                mpvPlayer.setProperty("pause",true)
+                player.pause = true
             }
         }
     }

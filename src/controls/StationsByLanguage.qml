@@ -102,13 +102,13 @@ Maui.Page {
         delegate: Rectangle {
             color: "transparent"
             width: ListView.view.width
-            height: 80
+            height: 50
             Maui.SwipeBrowserDelegate
             {
                 anchors.fill: parent
                 label1.text: name
                 label2.text: tags
-                iconSource: favicon
+                //iconSource: favicon
                 iconSizeHint: Maui.Style.iconSizes.medium
 
                 onClicked: {
@@ -116,9 +116,10 @@ Maui.Page {
                     currentStation = name
                     playingInfo.text = currentStation
                     playingInfoOnChangedPage = playingInfo.text
-                    player.stop()
-                    player.source = url_resolved
-                    player.play()
+                    player.pause = true
+                    player.loadFile(url_resolved)
+                    player.pause = false
+                    stationLoaded = false
                 }
 
                 quickActions: [
@@ -155,8 +156,8 @@ Maui.Page {
         anchors.margins: 20
         width: 60
         height: width
-        icon.name: player.playbackState == MediaPlayer.StoppedState ? "media-playback-start" : "media-playback-stop"
-        onClicked: player.playbackState == MediaPlayer.StoppedState ? player.play() : player.stop()
+        icon.name: player.pause ? "media-playback-start" : "media-playback-stop"
+        onClicked: player.pause = !player.pause
     }
 
     Maui.FloatingButton
@@ -165,7 +166,7 @@ Maui.Page {
         anchors.bottom: parent.bottom
         anchors.right: playButton.left
         anchors.margins: 20
-        visible: player.playbackState == MediaPlayer.StoppedState ? false : true
+        visible: player.pause ? false : true
         width: 100
         height: 60
         background: Rectangle {

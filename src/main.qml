@@ -1,10 +1,9 @@
 import QtQuick
 import QtQuick.Controls
 import org.mauikit.controls as Maui
-import QtMultimedia
 import QtQml
-import Qt.labs.settings
-import org.kde.novalive
+import QtCore
+import org.kde.novalive 1.0
 import QtQuick.Window
 
 Maui.ApplicationWindow
@@ -31,10 +30,13 @@ Maui.ApplicationWindow
     property string currentTitle
     property string playingInfoOnChangedPage
     property string favorites: ""
+    property string apiKeyYouTube: ""
     property int styleType: Maui.Style.Auto
+    property bool stationLoaded: false
 
     Settings {
         property alias favorites: root.favorites
+        property alias apiKeyYouTube: root.apiKeyYouTube
         property alias styleType: root.styleType
     }
 
@@ -43,21 +45,69 @@ Maui.ApplicationWindow
     width: Screen.desktopAvailableWidth - Screen.desktopAvailableWidth * 35 / 100
     height: Screen.desktopAvailableHeight - Screen.desktopAvailableHeight * 15 / 100
 
-    property string apiKeyYouTube: ""
-
-    Settings {
-        property alias apiKeyYouTube: root.apiKeyYouTube
-    }
-
     SettingsDialog
     {
         id: settingsDialog
     }
 
-    MpvObject {
-        id: mpvPlayer
+    // MEDIA PLAYER
+
+    MpvItem {
+        id: player
+
         anchors.fill: parent
         visible: false
+
+        onReady: {
+            player.pause = true
+            player.setProperty("mute", false)
+            player.setProperty("volume", 85)
+        }
+
+        onFileLoaded: {
+
+            commandAsync(["expand-text", "volume is ${volume}"], MpvItem.ExpandText);
+            stationLoaded = true
+
+        }
+
+        onMediaTitleChanged: {
+
+            if (stationLoaded) {
+
+                // Update media title info
+
+                if (currentTitle != player.mediaTitle) {
+
+                    // Clear metadata model
+
+                    metaDataModel.clear()
+
+                    // Print to console
+
+                    console.info(player.mediaTitle)
+
+                    // Get time
+
+                    var timeString = new Date().toLocaleTimeString(Qt.locale("es_ES"))
+
+                    // Add to notifications playlist
+
+                    currentTitle = player.mediaTitle
+                    const artistsong = currentTitle.split(" - ");
+
+                    notificationsModel.insert(0, {"title": currentTitle, "station": currentStation ,"artist": artistsong[0], "song": artistsong[1], "time": timeString})
+
+                    // Info
+
+                    playingInfoOnChangedPage = currentStation + " playing " + currentTitle
+
+                    // Emit signal
+
+                    root.titleChanged()
+                }
+            }
+        }
     }
 
     ThemeManager {
@@ -80,11 +130,17 @@ Maui.ApplicationWindow
 
     function getFavorites() {
         if (favoritesModel.count == 0) {
+
             // Leer favoritos de ~/.config/KDE/novalive.conf
-            var datamodel = JSON.parse(favorites)
-            for (var i = 0; i < datamodel.length; ++i)
-            {
-                favoritesModel.append(datamodel[i])
+
+            if (favorites) {
+
+                var datamodel = JSON.parse(favorites)
+
+                for (var i = 0; i < datamodel.length; ++i)
+                {
+                    favoritesModel.append(datamodel[i])
+                }
             }
         }
     }
@@ -152,60 +208,6 @@ Maui.ApplicationWindow
         });
     }
 
-    // RADIO PLAYER
-
-    MediaPlayer {
-        id: player
-
-        audioOutput: AudioOutput {}
-
-        onMetaDataChanged: {
-
-            if (currentTitle != player.metaData.stringValue(MediaMetaData.Title)) {
-
-                // Clear metadata model
-
-                metaDataModel.clear()
-
-                // Read avaliable metadata
-
-                if (player.metaData) {
-                    for (var key of player.metaData.keys()) {
-                        metaDataModel.append({"key": key,"stringKey": player.metaData.metaDataKeyToString(key), "value": player.metaData.value(key), "stringValue": player.metaData.stringValue(key)})
-                    }
-                }
-
-                // Print to console
-
-                for (var i = 0; i < metaDataModel.count; i++) {
-                    var mdKey = metaDataModel.get(i).mdKey
-                    var mdKeyString = metaDataModel.get(i).mdKeyString
-                    var mdValue= metaDataModel.get(i).mdValue
-                    var mdValueString = metaDataModel.get(i).mdValueString
-                    console.info(mdKey, mdKeyString, mdValue, mdValueString)
-                }
-
-                // Get time
-
-                var timeString = new Date().toLocaleTimeString(Qt.locale("es_ES"))
-
-                // Add to notifications playlist
-
-                const artistsong = currentTitle.split(" - ");
-
-                notificationsModel.insert(0, {"title": currentTitle, "station": currentStation ,"artist": artistsong[0], "song": artistsong[1], "time": timeString})
-
-                // Info
-
-                playingInfoOnChangedPage = currentStation + " playing " + currentTitle
-
-                // Emit signal
-
-                root.titleChanged()
-            }
-        }
-    }
-
     // MAIN PAGE
 
     Maui.SideBarView
@@ -266,41 +268,40 @@ Maui.ApplicationWindow
                     iconSource: icon
 
                     onClicked: {
-                        mpvPlayer.setProperty("pause",true)
                         switch (index) {
                             case 0: {
                                 menuSideBar.currentIndex = index
-                                stackView.push("Notifications.qml")
+                                stackView.push("controls/Notifications.qml")
                                 return
                             }
                             case 1: {
                                 menuSideBar.currentIndex = index
-                                stackView.push("Favorites.qml")
+                                stackView.push("controls/Favorites.qml")
                                 return
                             }
                             case 2: {
                                 menuSideBar.currentIndex = index
-                                stackView.push("SoulFunk.qml")
+                                stackView.push("controls/SoulFunk.qml")
                                 return
                             }
                             case 3: {
                                 menuSideBar.currentIndex = index
-                                stackView.push("Search.qml")
+                                stackView.push("controls/Search.qml")
                                 return
                             }
                             case 4: {
                                 menuSideBar.currentIndex = index
-                                stackView.push("Genres.qml")
+                                stackView.push("controls/Genres.qml")
                                 return
                             }
                             case 5: {
                                 menuSideBar.currentIndex = index
-                                stackView.push("Country.qml")
+                                stackView.push("controls/Country.qml")
                                 return
                             }
                             case 6: {
                                 menuSideBar.currentIndex = index
-                                stackView.push("Language.qml")
+                                stackView.push("controls/Language.qml")
                                 return
                             }
                         }
@@ -316,7 +317,7 @@ Maui.ApplicationWindow
             headBar.visible: false
 
             Component.onCompleted: {
-                stackView.push("Home.qml")
+                stackView.push("controls/Home.qml")
             }
 
             StackView {

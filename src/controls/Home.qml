@@ -28,35 +28,10 @@ Maui.Page {
     ColumnLayout {
         anchors.centerIn: parent
 
-        //Layout.margins: 20
-
-        //anchors.left: parent.left
-        //anchors.right: parent.right
-        //anchors.margins: 20
-
-        //Layout.alignment: Qt.AlignVCenter
-        //width: parent.width - 40
-
         width: parent.width
         height: 70
 
-        //spacing: 10
-        //Layout.minimumHeight: 200
-        //Layout.maximumHeight: 300
-        //Layout.preferredHeight: 250
-        //Layout.fillHeight: true
-        //Layout.preferredHeight: parent.height
-        //Layout.minimumHeight: parent.height
-        //Layout.maximumHeight: parent.height
-        //anchors.centerIn: parent
-
         Label {
-            //Layout.alignment: Qt.AlignVCenter
-            //anchors.left: parent.left
-            //anchors.right: parent.right
-
-            //Layout.alignment: Qt.AlignHCenter
-
             Layout.leftMargin: 20
             Layout.rightMargin: 20
             Layout.minimumHeight: 0
@@ -65,11 +40,6 @@ Maui.Page {
             Layout.minimumWidth: 0
             Layout.maximumWidth: parent.width > 600 ? 600 - 40 : parent.width - 40
             Layout.preferredWidth: parent.width
-
-            //width: parent.width
-            //height: parent.height
-
-            //Layout.fillHeight: true
 
             elide: Text.ElideRight
             wrapMode: Text.WordWrap
@@ -86,17 +56,4 @@ Maui.Page {
             }
         }
     }
-
-    /*
-    Maui.FloatingButton
-    {
-        anchors.verticalCenter: parent.verticalCenter
-        anchors.right: parent.right
-        anchors.margins: 20
-        width: 60
-        height: width
-        icon.name: "go-next"
-        onClicked: stackView.push("APIKeyYouTube3.qml")
-    }
-    */
 }
