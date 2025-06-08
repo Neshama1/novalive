@@ -3,7 +3,6 @@ import QtQml
 import QtQuick.Controls
 import QtQuick.Layouts
 import org.mauikit.controls as Maui
-import Qt.labs.settings
 
 Maui.SettingsDialog
 {

@@ -1,8 +1,8 @@
+import QtCore
+import QtQml
 import QtQuick
 import QtQuick.Controls
 import org.mauikit.controls as Maui
-import QtQml
-import QtCore
 import org.kde.novalive 1.0
 import QtQuick.Window
 
@@ -214,9 +214,10 @@ Maui.ApplicationWindow
     {
         anchors.fill: parent
 
+        sideBar.width: sideBarWidth
         sideBar.preferredWidth: sideBarWidth
 
-        Behavior on sideBar.preferredWidth {
+        Behavior on sideBar.width {
             NumberAnimation {
                 duration: 250
                 easing.type: Easing.OutExpot

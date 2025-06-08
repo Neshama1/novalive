@@ -2,7 +2,6 @@ import QtQuick
 import QtQuick.Controls
 import org.mauikit.controls as Maui
 import QtQuick.Layouts
-import QtQuick.Effects
 
 Maui.Page {
     id: apiKeyYouTube1Page
@@ -50,8 +49,8 @@ Maui.Page {
         Maui.IconItem
         {
             id: iconItem
+
             Layout.alignment: Qt.AlignHCenter
-            Layout.preferredWidth: parent.width
             imageSource: "qrc:/assets/pixabay-cassette-4103530_1280.png"
             imageSizeHint: 270
             maskRadius: Maui.Style.radiusV

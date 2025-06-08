@@ -1,8 +1,7 @@
+import QtCore
 import QtQuick
 import QtQuick.Controls
 import org.mauikit.controls as Maui
-import Qt.labs.settings
-import QtMultimedia
 
 Maui.Page {
     id: soulfunkPage
