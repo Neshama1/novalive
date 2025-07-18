@@ -64,7 +64,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     // ABOUT DIALOG
 
     KAboutData about(QStringLiteral("novalive"),
-                     QStringLiteral("novalive"),
+                     QStringLiteral("Nova Live"),
                      NOVALIVE_VERSION_STRING,
                      i18n("Browse and play your online radio stations."),
                      KAboutLicense::LGPL_V3,
