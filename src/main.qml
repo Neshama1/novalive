@@ -10,6 +10,13 @@ Maui.ApplicationWindow
 {
     id: root
 
+    Maui.Style.styleType: themeManager.styleType
+    Maui.Style.accentColor: themeManager.accentColor
+    Maui.Style.defaultSpacing: themeManager.spacingSize
+    Maui.Style.defaultPadding: themeManager.paddingSize
+    Maui.Style.contentMargins: themeManager.marginSize
+    Maui.Style.radiusV: themeManager.borderRadius
+
     ListModel { id: favoritesModel }
     ListModel { id: notificationsModel }
     ListModel { id: soulfunkModel }
